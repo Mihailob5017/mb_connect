@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 // Importing Routes
+import user_route from './routes/user_route.js';
 
 // Enabling env so we can keep all our secrets there
 dotenv.config();
@@ -38,3 +39,6 @@ mongoose
 	.catch((err) => {
 		console.error(err.message);
 	});
+
+// Defining Routes
+app.use('/user', user_route);
