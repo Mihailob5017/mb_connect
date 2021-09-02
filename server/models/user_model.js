@@ -9,15 +9,15 @@ const userSchema = mongoose.Schema({
 	password: { type: String, required: true },
 	// true => regular user
 	// false => expert user
-	is_Regular: { type: Boolean, required: true },
+	is_regular: { type: Boolean, required: true },
 	profile_pic: { type: String },
 	// REGULAR USERS
 	address: { type: String },
 	phone_number: { type: String },
-	about_me: { type: String },
 	// Id's of experts that accepted the request
-	accepted_request: { type: [String], default: [] },
+	accepted_requests: { type: [String], default: [] },
 	// EXPERT USERS
+	about_me: { type: String },
 	service: { type: String, default: '' },
 	// Is the expert Free/Taken/Disabled
 	status: { type: String, default: '' },
