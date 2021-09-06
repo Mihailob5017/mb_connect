@@ -2,9 +2,43 @@ import mongoose from 'mongoose';
 import User from '../models/user_model.js';
 
 export const signIn = async (req, res) => {
-	// Check if the email and password are correct
-	// If correct: procced to log in
-	// If not: send an error message,telling the paramaters are incorect
+	const { email, password } = req.body;
+
+	try {
+		// Check if the user already exists
+		const existingUser = await User.findOne({ email });
+		if (existingUser) {
+			// Check if the password matches
+			if (password === existingUser.password) {
+				res.status(200).json({
+					message: 'Successfully Loged In',
+					result: existingUser,
+					is_successfull: true,
+				});
+				return;
+			} else {
+				res.status(404).json({
+					message: 'Password Mismatch',
+					is_successfull: false,
+				});
+				return;
+			}
+		} else {
+			res.status(404).json({
+				message: 'User does not exist',
+				is_successfull: false,
+			});
+			return;
+		}
+	} catch (error) {
+		res.status(500).json({
+			message: 'There has been an Server Error',
+			error,
+			is_successfull: false,
+		});
+		console.error(error);
+		return;
+	}
 };
 
 export const signUp = async (req, res) => {
@@ -16,7 +50,9 @@ export const signUp = async (req, res) => {
 		const doesUserExist = await User.findOne({ email });
 		if (doesUserExist) {
 			// If exists: Send an error message stating that the account already exists
-			res.status(404).json({ message: 'This email already exists' });
+			res
+				.status(404)
+				.json({ message: 'This email already exists', is_successfull: false });
 			return;
 		} else {
 			// If not: Create a new account
@@ -39,11 +75,19 @@ export const signUp = async (req, res) => {
 					is_regular === false ? req.body.pending_requests : null,
 			};
 			const result = await User.create(newUser);
-			res.status(200).json({ message: 'Account Successfully Created', result });
+			res.status(200).json({
+				message: 'Account Successfully Created',
+				result,
+				is_successfull: true,
+			});
 			return;
 		}
 	} catch (error) {
-		res.status(500).json({ message: 'There has been an Server Error', error });
+		res.status(500).json({
+			message: 'There has been an Server Error',
+			error,
+			is_successfull: false,
+		});
 		console.error(error);
 		return;
 	}
