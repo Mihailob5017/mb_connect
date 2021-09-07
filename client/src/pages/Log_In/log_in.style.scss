@@ -34,13 +34,14 @@
 }
 .log-in-card {
 	width: 600px;
-	height: 900px;
+	height: fit-content;
 	background: #fafafa;
 	border: 0.5px solid #164a41;
 	box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.33);
 	border-radius: 20px;
 }
-.header-wrapper {
+// Header
+.header-logo-wrapper {
 	display: flex;
 	flex-direction: row;
 	margin: 1em;
@@ -54,5 +55,120 @@
 		font-size: 40px;
 		font-weight: bold;
 		margin-left: 0.5em;
+	}
+}
+.log-in-head {
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+	color: #164a41;
+	margin-top: 2em;
+}
+// Google Button Component
+.google-button-wrapper {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 2em auto;
+	background: #3578e7;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 5px;
+	border: none;
+	width: 80%;
+	height: 60px;
+	.google-button {
+		background: #fafafa;
+		margin-left: 5px;
+		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		img {
+			width: 70%;
+			height: 70%;
+		}
+	}
+
+	p {
+		width: 86%;
+		text-align: center;
+		font-size: 36px;
+		font-weight: lighter;
+		color: white;
+	}
+}
+// Input Components
+.or-wrapper {
+	width: 80%;
+	margin: auto;
+	border-bottom: 1px solid #4a4a4a;
+	display: flex;
+	justify-content: center;
+	p {
+		background: #fafafa;
+		font-size: 25px;
+		padding: 0 0.5em;
+		transform: translateY(40%);
+	}
+}
+.input-wrapper {
+	position: relative;
+	width: 80%;
+	margin: 3em auto;
+	* {
+		display: block;
+		width: 100%;
+		margin: 5px;
+		font-size: 26px;
+		letter-spacing: 1px;
+	}
+	label {
+		font-size: 26px;
+		letter-spacing: 1px;
+		color: #4a4a4a;
+	}
+	input {
+		border: 0.5px solid #4a4a4a;
+		border-radius: 6px;
+		padding: 5px;
+		outline: none;
+	}
+	button {
+		width: fit-content;
+		padding: 0 0.5em;
+		font-size: 22px;
+		position: absolute;
+		display: inline-block;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.action-button-primary {
+	display: block;
+	margin: 2em auto;
+	font-size: 30px;
+	padding: 0.25em 1.5em;
+	border-radius: 5px;
+	border: 1px solid #164a41;
+	cursor: pointer;
+	color: white;
+	background: #164a41;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.switch-message {
+	display: block;
+	width: 80%;
+	font-size: 26px;
+	letter-spacing: 2px;
+	font-weight: lighter;
+	margin: auto auto 1.5em auto;
+	label {
+		font-weight: normal;
+		color: #1149a3;
+		cursor: pointer;
 	}
 }
