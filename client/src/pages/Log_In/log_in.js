@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './log_in.style.scss';
-// Components
-import Logo from '../../images/cactus.svg';
+// Logo
 import Google from '../../images/google.svg';
+
+// Components
+import CardComponent from '../../components/card/card.component';
+import InputComponent from '../../components/input/input.component';
+import Button from '../../components/button/button.component';
+import CardHeaderComponent from '../../components/card/card-header/card-header.component';
+
 const LogIn = () => {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 	return (
 		<div className='log-in-container'>
 			<div className='log-in-greenscreen'>
@@ -22,11 +30,8 @@ const LogIn = () => {
 			{/* Will be replaced by individual components*/}
 			<div className='log-in-card-container'>
 				{/* Header Component */}
-				<div className='log-in-card'>
-					<div className='header-logo-wrapper'>
-						<img src={Logo} alt='cactus-logo' />
-						<p>MB Connect</p>
-					</div>
+				<CardComponent customClass='log-in-card'>
+					<CardHeaderComponent />
 					<h1 className='log-in-head'>Log in to your account</h1>
 					{/* Google Button Component */}
 					<button className='google-button-wrapper'>
@@ -41,23 +46,30 @@ const LogIn = () => {
 						<p>or</p>
 					</div>
 
-					<div className='input-wrapper'>
-						<label>Email Address</label>
-						<input type='email' />
-					</div>
+					<InputComponent
+						type='email'
+						name='email'
+						value={email}
+						handleChange={setEmail}
+						label='Email Address'
+					/>
 
-					<div className='input-wrapper'>
-						<label>Password</label>
-						<input type='password' />
-						<button>show</button>
-					</div>
+					<InputComponent
+						isPassword={true}
+						type='password'
+						name='password'
+						value={password}
+						handleChange={setPassword}
+						label='Password'
+					/>
+
 					{/* Sign In Button */}
-					<button className='action-button-primary'>Sign In</button>
+					<Button type='primary'>Sign In</Button>
 					{/* Url Message */}
 					<p className='switch-message'>
 						Don't have an account? <label>Sign Here</label>
 					</p>
-				</div>
+				</CardComponent>
 			</div>
 		</div>
 	);
