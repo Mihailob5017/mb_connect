@@ -8,66 +8,108 @@ import CardComponent from '../../components/card/card.component';
 import InputComponent from '../../components/input/input.component';
 import Button from '../../components/button/button.component';
 import CardHeaderComponent from '../../components/card/card-header/card-header.component';
+import GreenScreen from '../../components/green-screen/green-screen.component';
+import StageCounter from '../../components/stage-counter/stage-counter.component';
 
 const LogIn = () => {
+	// State
+	const [isLogIn, setLogIn] = useState(false);
+	// Log in State
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	// Sign up State
+	const [isRegularUser, setRegularUser] = useState(true);
+
+	// Function Handlers
+	const handleLogin = () => setLogIn(!isLogIn);
 	return (
 		<div className='log-in-container'>
-			<div className='log-in-greenscreen'>
-				<h1>MB Connect is officialy live!</h1>
-				<p>
-					Mb Connect is an early enterprise level aplication for connecting
-					different types of experts and their services to different users all
-					across the globe.
-				</p>
-				<p>
-					No more need to search through your local phone book,or to reach out
-					to people to see if somebody knows somebody else.
-				</p>
-				<p>Whatever you need, you can find it here!</p>
-			</div>
+			<GreenScreen />
 			{/* Will be replaced by individual components*/}
 			<div className='log-in-card-container'>
 				{/* Header Component */}
 				<CardComponent customClass='log-in-card'>
 					<CardHeaderComponent />
-					<h1 className='log-in-head'>Log in to your account</h1>
-					{/* Google Button Component */}
-					<button className='google-button-wrapper'>
-						<div className='google-button'>
-							<img src={Google} alt='google-button' />
-						</div>
+					{isLogIn ? (
+						<>
+							<h1 className='log-in-head'>Log in to your account</h1>
+							{/* Google Button Component */}
+							<button className='google-button-wrapper'>
+								<div className='google-button'>
+									<img src={Google} alt='google-button' />
+								</div>
 
-						<p>Log in with Google</p>
-					</button>
-					{/* Input Components */}
-					<div className='or-wrapper'>
-						<p>or</p>
-					</div>
+								<p>Log in with Google</p>
+							</button>
+							{/* Input Components */}
+							<div className='or-wrapper'>
+								<p>or</p>
+							</div>
 
-					<InputComponent
-						type='email'
-						name='email'
-						value={email}
-						handleChange={setEmail}
-						label='Email Address'
-					/>
+							<InputComponent
+								type='email'
+								name='email'
+								value={email}
+								handleChange={setEmail}
+								label='Email Address'
+							/>
 
-					<InputComponent
-						isPassword={true}
-						type='password'
-						name='password'
-						value={password}
-						handleChange={setPassword}
-						label='Password'
-					/>
+							<InputComponent
+								isPassword={true}
+								type='password'
+								name='password'
+								value={password}
+								handleChange={setPassword}
+								label='Password'
+							/>
 
-					{/* Sign In Button */}
-					<Button type='primary'>Sign In</Button>
+							{/* Sign In Button */}
+							<Button type='primary'>Sign In</Button>
+						</>
+					) : (
+						<>
+							<h1 className='log-in-head'>Create your Account</h1>
+							<p className='log-in-text'>
+								Please choose what type of user are you.Warning this cannot be
+								changed later.
+							</p>
+							<div className='button-switch-container'>
+								<button
+									className={`button-switch ${isRegularUser && 'selected-btn'}`}
+									onClick={() => setRegularUser(true)}
+								>
+									Regular
+								</button>
+								<button
+									className={`button-switch ${
+										isRegularUser === false && 'selected-btn'
+									}`}
+									onClick={() => setRegularUser(false)}
+								>
+									Expert
+								</button>
+							</div>
+							<p className='log-in-text'>
+								Regular users are the one who are in need for a expert in a
+								certan domain.
+							</p>
+							<p className='log-in-text'>
+								Expert users are the providers for a certan type of service and
+								they are being contacted by regular users.
+							</p>
+							{/* Proceed Step */}
+							<Button type='primary'>Select</Button>
+							<StageCounter stage={1} />
+						</>
+					)}
+
 					{/* Url Message */}
 					<p className='switch-message'>
-						Don't have an account? <label>Sign Here</label>
+						{isLogIn ? `Don't have an account? ` : `Already have an account? `}
+
+						<label onClick={handleLogin}>
+							{isLogIn ? `Sign Up` : `Log In`}
+						</label>
 					</p>
 				</CardComponent>
 			</div>
