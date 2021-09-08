@@ -10,6 +10,7 @@ import Button from '../../components/button/button.component';
 import CardHeaderComponent from '../../components/card/card-header/card-header.component';
 import GreenScreen from '../../components/green-screen/green-screen.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
+import { Link } from 'react-router-dom';
 
 const LogIn = () => {
 	// State
@@ -98,7 +99,9 @@ const LogIn = () => {
 								they are being contacted by regular users.
 							</p>
 							{/* Proceed Step */}
-							<Button type='primary'>Select</Button>
+							<Link to={`/signup/${isRegularUser ? 'regular' : 'expert'}`}>
+								<Button type='primary'>Select</Button>
+							</Link>
 							<StageCounter stage={1} />
 						</>
 					)}

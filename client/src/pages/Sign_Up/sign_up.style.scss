@@ -1,0 +1,25 @@
+.sign-up-container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.sign-up-card {
+	width: 78%;
+	height: 98vh;
+	margin: 1em 2em;
+	display: flex;
+	flex-direction: row;
+}
+.sign-up-column {
+	width: 50%;
+	height: 80%;
+}
+.sign-up-head {
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+	color: #164a41;
+	margin-top: 2em;
+}
