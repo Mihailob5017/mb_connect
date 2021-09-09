@@ -1,0 +1,19 @@
+.dropdown-wrapper {
+	width: 80%;
+	margin: 3em auto;
+	label {
+		font-size: 26px;
+		letter-spacing: 1px;
+		color: #4a4a4a;
+		margin: 5px;
+	}
+	select {
+		margin: 5px;
+		width: 100%;
+		font-size: 26px;
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid #4a4a4a;
+		outline: #164a41;
+	}
+}
