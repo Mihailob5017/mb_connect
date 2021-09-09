@@ -13,7 +13,7 @@
 	flex-direction: row;
 }
 .sign-up-column {
-	width: 50%;
+	width: 40%;
 	height: 80%;
 }
 .sign-up-head {
@@ -22,4 +22,35 @@
 	font-size: 40px;
 	color: #164a41;
 	margin-top: 2em;
+}
+.empty-space {
+	height: 12em;
+}
+.upload-wrapper {
+	cursor: pointer;
+	margin: 4em auto;
+	width: 80%;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	background: #164a41;
+	img {
+		width: 25px;
+		height: 25px;
+	}
+	p {
+		width: fit-content;
+		font-size: 24px;
+		color: white;
+		margin-left: 5px;
+	}
+}
+.sign-up-text {
+	display: block;
+	margin: 2em auto;
+	width: 80%;
+	font-size: 24px;
 }

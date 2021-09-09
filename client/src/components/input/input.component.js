@@ -5,7 +5,7 @@ const InputComponent = ({
 	value,
 	handleChange,
 	label,
-	type,
+	type = 'text',
 	isPassword = false,
 	name,
 	customClass,
