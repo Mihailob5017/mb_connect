@@ -9,7 +9,7 @@ import CardHeader from '../../components/card/card-header/card-header.component'
 import InputComponent from '../../components/input/input.component';
 import Button from '../../components/button/button.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
-const SignUpComponent = ({ state, handleChange }) => {
+const SignUpComponent = ({ state, handleChange, handleSubmit }) => {
 	const [uploadBtnText, setUploadBtnText] = useState(
 		'Upload a Profile Picture'
 	);
@@ -87,7 +87,9 @@ const SignUpComponent = ({ state, handleChange }) => {
 						correct, since you won’t be able to change them once the profile is
 						created
 					</p>
-					<Button type='primary'>Create Profile</Button>
+					<Button handleClick={handleSubmit} type='primary'>
+						Create Profile
+					</Button>
 					<StageCounter stage={2} />
 				</div>
 			</CardComponent>
