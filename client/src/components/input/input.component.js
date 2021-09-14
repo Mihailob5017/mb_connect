@@ -21,7 +21,7 @@ const InputComponent = ({
 				name={name}
 				type={isShownType === true ? type : 'text'}
 				value={value}
-				onChange={(e) => handleChange(e.target.value)}
+				onChange={(val) => handleChange(name, val.target.value)}
 			/>
 			{isPassword === true ? (
 				<button onClick={handleClick}>

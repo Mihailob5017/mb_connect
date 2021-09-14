@@ -2,7 +2,7 @@ import React from 'react';
 import './button.style.scss';
 
 const Button = ({
-	actionHandler,
+	handleClick,
 	type,
 	extraStyle,
 	disabled = false,
@@ -11,7 +11,7 @@ const Button = ({
 	return (
 		<button
 			disabled={disabled}
-			onClick={actionHandler}
+			onClick={handleClick}
 			className={`button ${type} ${extraStyle}`}
 		>
 			{children}

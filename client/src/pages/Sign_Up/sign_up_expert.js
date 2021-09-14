@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './sign_up.style.scss';
+import FileBase from 'react-file-base64';
 import Upload from '../../images/upload.svg';
 // Components
 import GreenScreen from '../../components/green-screen/green-screen.component';
@@ -10,8 +11,9 @@ import Button from '../../components/button/button.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
 import DropDownComponent from '../../components/dropdown/dropdown.component';
 
-const SignUpComponent = () => {
+const SignUpComponent = ({ state, handleChange }) => {
 	const options = [
+		{ key: 'default', text: 'Service you Provide', value: '' },
 		{ key: 'angular', text: 'Angular', value: 'angular' },
 		{ key: 'css', text: 'CSS', value: 'css' },
 		{ key: 'design', text: 'Graphic Design', value: 'design' },
@@ -31,40 +33,77 @@ const SignUpComponent = () => {
 		{ key: 'ui', text: 'UI Design', value: 'ui' },
 		{ key: 'ux', text: 'User Experience', value: 'ux' },
 	];
-
+	const [uploadBtnText, setUploadBtnText] = useState(
+		'Upload a Profile Picture'
+	);
 	return (
 		<div className='sign-up-container '>
 			<GreenScreen reduced={true} />
 			<CardComponent customClass='sign-up-card'>
 				<div className='sign-up-column'>
 					<CardHeader /> <h1 className='sign-up-head'>Create your Account</h1>
-					<InputComponent type='email' name='email' label='Email Address' />
-					<InputComponent name='first_name' label='First Name' />
-					<InputComponent name='last_name' label='Last Name' />
-					<DropDownComponent options={options} />
+					<InputComponent
+						value={state.email}
+						handleChange={handleChange}
+						type='email'
+						name='email'
+						label='Email Address'
+					/>
+					<InputComponent
+						value={state.first_name}
+						handleChange={handleChange}
+						name='first_name'
+						label='First Name'
+					/>
+					<InputComponent
+						value={state.last_name}
+						handleChange={handleChange}
+						name='last_name'
+						label='Last Name'
+					/>
+					<DropDownComponent
+						value={state.service}
+						handleChange={handleChange}
+						options={options}
+					/>
 					<div className='about-me-wrapper'>
 						<label>About me</label>
-						<textarea className='about-me-textarea'></textarea>
+						<textarea
+							value={state.about_me}
+							name='about_me'
+							onChange={(e) => handleChange(e.target.name, e.target.value)}
+							className='about-me-textarea'
+						></textarea>
 					</div>
 				</div>
 
 				<div className='sign-up-column'>
 					<div className='empty-space'></div>
 					<InputComponent
+						value={state.password}
 						isPassword={true}
 						type='password'
 						name='password'
 						label='Password'
 					/>
 					<InputComponent
+						value={state.repeat_password}
 						isPassword={true}
 						type='password'
 						name='repeat_password'
 						label='Repeat Password'
 					/>
 					<div className='upload-wrapper'>
+						<FileBase
+							type='file'
+							multiple={false}
+							onDone={({ base64 }) => {
+								handleChange('profile_pic', base64);
+								setUploadBtnText('Image Selected');
+							}}
+						/>
 						<img src={Upload} alt='Upload' />
-						<p>Upload a Profile Picture</p>
+						<p>{uploadBtnText}</p>
 					</div>
 					<p className='sign-up-text'>
 						Make sure you to check if all the parameters that you entered are

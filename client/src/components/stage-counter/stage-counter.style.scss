@@ -12,6 +12,9 @@
 		border: none;
 		border-radius: 50%;
 	}
+	.passive-stage:hover {
+		border: 0.5px solid #164a41;
+	}
 	.active-stage {
 		background: #164a41;
 	}
