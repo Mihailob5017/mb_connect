@@ -12,13 +12,9 @@ import GreenScreen from '../../components/green-screen/green-screen.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
 import { Link } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({ handleChange, handleSubmit, state }) => {
 	// State
-	const [isLogIn, setLogIn] = useState(false);
-	// Log in State
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	// Sign up State
+	const [isLogIn, setLogIn] = useState(true);
 	const [isRegularUser, setRegularUser] = useState(true);
 
 	// Function Handlers
@@ -50,8 +46,8 @@ const LogIn = () => {
 							<InputComponent
 								type='email'
 								name='email'
-								value={email}
-								handleChange={setEmail}
+								value={state.email}
+								handleChange={handleChange}
 								label='Email Address'
 							/>
 
@@ -59,13 +55,15 @@ const LogIn = () => {
 								isPassword={true}
 								type='password'
 								name='password'
-								value={password}
-								handleChange={setPassword}
+								value={state.password}
+								handleChange={handleChange}
 								label='Password'
 							/>
 
 							{/* Sign In Button */}
-							<Button type='primary'>Sign In</Button>
+							<Button handleClick={handleSubmit} type='primary'>
+								Sign In
+							</Button>
 						</>
 					) : (
 						<>

@@ -11,7 +11,7 @@ import Button from '../../components/button/button.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
 import DropDownComponent from '../../components/dropdown/dropdown.component';
 
-const SignUpComponent = ({ state, handleChange }) => {
+const SignUpComponent = ({ state, handleChange, handleSubmit }) => {
 	const options = [
 		{ key: 'default', text: 'Service you Provide', value: '' },
 		{ key: 'angular', text: 'Angular', value: 'angular' },
@@ -81,6 +81,7 @@ const SignUpComponent = ({ state, handleChange }) => {
 					<div className='empty-space'></div>
 					<InputComponent
 						value={state.password}
+						handleChange={handleChange}
 						isPassword={true}
 						type='password'
 						name='password'
@@ -88,6 +89,7 @@ const SignUpComponent = ({ state, handleChange }) => {
 					/>
 					<InputComponent
 						value={state.repeat_password}
+						handleChange={handleChange}
 						isPassword={true}
 						type='password'
 						name='repeat_password'
@@ -110,7 +112,9 @@ const SignUpComponent = ({ state, handleChange }) => {
 						correct, since you won’t be able to change them once the profile is
 						created
 					</p>
-					<Button type='primary'>Create Profile</Button>
+					<Button handleClick={handleSubmit} type='primary'>
+						Create Profile
+					</Button>
 					<StageCounter stage={2} />
 				</div>
 			</CardComponent>
