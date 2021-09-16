@@ -16,7 +16,7 @@ const LogIn = () => {
 		dispatch(
 			logIn({
 				...body,
-				isAuthByGoogle: isAuthByGoogle !== true && false,
+				isAuthByGoogle: isAuthByGoogle !== true ? false : true,
 			})
 		);
 	};
