@@ -12,11 +12,11 @@ const LogIn = () => {
 	const handleStateChange = (name, value) => {
 		setBody({ ...body, [name]: value });
 	};
-	const handleSubmit = (isAuthByGoogle = false) => {
+	const handleSubmit = (isAuthByGoogle) => {
 		dispatch(
 			logIn({
 				...body,
-				isAuthByGoogle,
+				isAuthByGoogle: isAuthByGoogle !== true && false,
 			})
 		);
 	};
