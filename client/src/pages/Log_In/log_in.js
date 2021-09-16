@@ -6,11 +6,15 @@ import Google from '../../images/google.svg';
 // Components
 import CardComponent from '../../components/card/card.component';
 import InputComponent from '../../components/input/input.component';
+// React Router
+import { Link } from 'react-router-dom';
+// Google Button
+import { GoogleLogin } from 'react-google-login';
+
 import Button from '../../components/button/button.component';
 import CardHeaderComponent from '../../components/card/card-header/card-header.component';
 import GreenScreen from '../../components/green-screen/green-screen.component';
 import StageCounter from '../../components/stage-counter/stage-counter.component';
-import { Link } from 'react-router-dom';
 
 const LogIn = ({ handleChange, handleSubmit, state }) => {
 	// State
@@ -19,6 +23,18 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 
 	// Function Handlers
 	const handleLogin = () => setLogIn(!isLogIn);
+	// Google Handlers
+	const onGoogleSuccess = (res) => {
+		console.log('Success');
+		const { profileObj } = res;
+		const { email } = profileObj;
+		handleChange('email', email);
+		handleSubmit(true);
+	};
+	const onGoogleFailure = (res) => {
+		console.log('Failure');
+	};
+	//
 	return (
 		<div className='log-in-container'>
 			<GreenScreen />
@@ -31,13 +47,28 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 						<>
 							<h1 className='log-in-head'>Log in to your account</h1>
 							{/* Google Button Component */}
-							<button className='google-button-wrapper'>
-								<div className='google-button'>
-									<img src={Google} alt='google-button' />
-								</div>
 
-								<p>Log in with Google</p>
-							</button>
+							<GoogleLogin
+								clientId='750291484607-rjottldigank2iurt9i74jpgspdubki1.apps.googleusercontent.com'
+								onSuccess={onGoogleSuccess}
+								onFailure={onGoogleFailure}
+								render={(renderProps) => {
+									return (
+										<button
+											disabled={renderProps.disabled}
+											onClick={renderProps.onClick}
+											className='google-button-wrapper'
+										>
+											<div className='google-button'>
+												<img src={Google} alt='google-button' />
+											</div>
+
+											<p>Log in with Google</p>
+										</button>
+									);
+								}}
+							/>
+
 							{/* Input Components */}
 							<div className='or-wrapper'>
 								<p>or</p>
@@ -97,7 +128,7 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 								they are being contacted by regular users.
 							</p>
 							{/* Proceed Step */}
-							<Link to={`/signup/${isRegularUser ? 'regular' : 'expert'}`}>
+							<Link to={`/auth/signup/${isRegularUser ? 'regular' : 'expert'}`}>
 								<Button type='primary'>Select</Button>
 							</Link>
 							<StageCounter stage={1} />

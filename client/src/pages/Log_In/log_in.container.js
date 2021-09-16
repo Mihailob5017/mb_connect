@@ -12,8 +12,13 @@ const LogIn = () => {
 	const handleStateChange = (name, value) => {
 		setBody({ ...body, [name]: value });
 	};
-	const handleSubmit = () => {
-		dispatch(logIn(body));
+	const handleSubmit = (isAuthByGoogle = false) => {
+		dispatch(
+			logIn({
+				...body,
+				isAuthByGoogle,
+			})
+		);
 	};
 
 	return (

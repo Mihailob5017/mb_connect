@@ -2,13 +2,20 @@ import mongoose from 'mongoose';
 import User from '../models/user_model.js';
 
 export const signIn = async (req, res) => {
-	const { email, password } = req.body;
+	const { email, password, isAuthByGoogle } = req.body;
 	try {
 		// Check if the user already exists
 		const existingUser = await User.findOne({ email });
 		if (existingUser) {
 			// Check if the password matches
-			if (password === existingUser.password) {
+			if (isAuthByGoogle === true) {
+				res.status(200).json({
+					message: 'Successfully Loged In',
+					result: existingUser,
+					is_successfull: true,
+				});
+				return;
+			} else if (password === existingUser.password) {
 				res.status(200).json({
 					message: 'Successfully Loged In',
 					result: existingUser,
