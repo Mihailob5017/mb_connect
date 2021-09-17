@@ -3,9 +3,11 @@ import User from '../models/user_model.js';
 
 export const signIn = async (req, res) => {
 	const { email, password, isAuthByGoogle } = req.body;
+	console.log(email);
 	try {
 		// Check if the user already exists
 		const existingUser = await User.findOne({ email });
+		console.log(existingUser);
 		if (existingUser) {
 			// Check if the password matches
 			if (isAuthByGoogle === true) {

@@ -6,3 +6,5 @@ export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 export const LOG_IN_START = 'LOG_IN_START';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
+// INTERACTIONS
+export const SET_USER_TYPE = 'SET_USER_TYPE';

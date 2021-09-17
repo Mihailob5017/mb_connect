@@ -29,7 +29,7 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 		const { profileObj } = res;
 		const { email } = profileObj;
 		handleChange('email', email);
-		handleSubmit(true);
+		handleSubmit(true, email);
 	};
 	const onGoogleFailure = (res) => {
 		console.log('Failure');

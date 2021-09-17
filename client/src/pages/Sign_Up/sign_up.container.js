@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignUpRegular from './sign_up_regular';
 import SignUpExpert from './sign_up_expert';
 // React Router
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 // Redux
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/actions/auth.action';
@@ -13,6 +13,7 @@ const SignUp = () => {
 	const dispatch = useDispatch();
 	// URL Location
 	const location = useLocation();
+	const history = useHistory();
 	const type = location.pathname.split('/').pop();
 	// State
 	const [user, setUser] = useState({
@@ -34,9 +35,7 @@ const SignUp = () => {
 	};
 
 	const handleSubmit = () => {
-		console.log(user);
-		console.log('------------');
-		dispatch(signUp(user));
+		dispatch(signUp(user, history));
 	};
 
 	return (
