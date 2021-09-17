@@ -5,9 +5,10 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Components
-
+import ExpertHomepage from './home.expert';
+import RegularHomepage from './home.regular';
 // Code
-const HomepageContainer = ({ isLogedIn }) => {
+const HomepageContainer = ({ isLogedIn, userType }) => {
 	// Variables
 	const history = useHistory();
 
@@ -16,7 +17,9 @@ const HomepageContainer = ({ isLogedIn }) => {
 		isLogedIn === false && history.push('/auth');
 	}, []);
 
-	return <div>Hello </div>;
+	return (
+		<>{userType === 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
+	);
 };
 
 // Accessing state
