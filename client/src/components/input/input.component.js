@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import EyeIcon from '../../images/visibility-button.svg';
+import SearchIcon from '../../images/search.svg';
 import './input.style.scss';
 const InputComponent = ({
 	value,
@@ -7,8 +8,10 @@ const InputComponent = ({
 	label,
 	type = 'text',
 	isPassword = false,
+	isSearch = false,
 	name,
 	customClass,
+	searchHandler,
 }) => {
 	const [isShownType, setShownType] = useState(true);
 
@@ -27,6 +30,13 @@ const InputComponent = ({
 				<button onClick={handleClick}>
 					<img src={EyeIcon} alt='Eye Icon' />
 					{isShownType ? 'Show' : 'Hide'}
+				</button>
+			) : (
+				<></>
+			)}
+			{isSearch === true ? (
+				<button onClick={searchHandler}>
+					<img src={SearchIcon} alt='Search Icon' />
 				</button>
 			) : (
 				<></>
