@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './home-regular.style.scss';
 // Images
 import Profile from '../../images/user.svg';
+// Redux
+import { connect } from 'react-redux';
 // React Router
 import { Link } from 'react-router-dom';
 // Components
@@ -9,7 +11,7 @@ import Navbar from '../../components/navbar/navbar.component';
 import Input from '../../components/input/input.component';
 
 // Code
-const HomepageRegular = () => {
+const HomepageRegular = ({ options }) => {
 	const [selectedBtn, changeSelectedColor] = useState('all-types');
 
 	const handleBtnChange = (e) => {
@@ -28,80 +30,121 @@ const HomepageRegular = () => {
 			<div className='main-content-wrapper'>
 				<div className='filter-wrapper'>
 					{/* Search Component */}
-					<Input type='text' name='search' label='Search' isSearch={true} />
-					{/* Filters Component */}
-					<button
-						value='all-types'
-						onClick={(e) => handleBtnChange(e)}
-						className={`filter-btn firt-btn ${
-							selectedBtn === 'all-types' && 'selected-btn'
-						}`}
-					>
-						All Types
-					</button>
-					<label>Development</label>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='software-development'
-						className={`filter-btn ${
-							selectedBtn === 'software-development' && 'selected-btn'
-						}`}
-					>
-						Software Development
-					</button>
-					<label>Design</label>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='industry-design'
-						className={`filter-btn ${
-							selectedBtn === 'industry-design' && 'selected-btn'
-						}`}
-					>
-						Industry Design
-					</button>
-					<label>Support</label>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='pr-support'
-						className={`filter-btn ${
-							selectedBtn === 'pr-support' && 'selected-btn'
-						}`}
-					>
-						PR Support
-					</button>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='tech-support'
-						className={`filter-btn ${
-							selectedBtn === 'tech-support' && 'selected-btn'
-						}`}
-					>
-						Technical Support
-					</button>
-					<label>Managment</label>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='industry-manager'
-						className={`filter-btn ${
-							selectedBtn === 'industry-manager' && 'selected-btn'
-						}`}
-					>
-						Industry Manager
-					</button>
-					<button
-						onClick={(e) => handleBtnChange(e)}
-						value='supplies-manager'
-						className={`filter-btn ${
-							selectedBtn === 'supplies-manager' && 'selected-btn'
-						}`}
-					>
-						Supplies Manager
-					</button>
+					<div className='filter-container'>
+						<Input
+							type='text'
+							customClass='margin-2'
+							name='search'
+							label='Search'
+							isSearch={true}
+						/>
+						{/* Filters Component */}
+
+						<label>Development</label>
+						{options
+							.filter((option) => option.group === 'development')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+						<label>Design</label>
+						{options
+							.filter((option) => option.group === 'design')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+						<label>Education</label>
+						{options
+							.filter((option) => option.group === 'education')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+					</div>
+					<div className='filter-container'>
+						{' '}
+						<button
+							value='all-types'
+							onClick={(e) => handleBtnChange(e)}
+							className={`filter-btn firt-btn ${
+								selectedBtn === 'all-types' && 'selected-btn'
+							}`}
+						>
+							All Types
+						</button>
+						<label>Support</label>
+						{options
+							.filter((option) => option.group === 'support')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+						<label>Art</label>
+						{options
+							.filter((option) => option.group === 'art')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+						<label>Sales</label>
+						{options
+							.filter((option) => option.group === 'sales')
+							.map((option) => (
+								<button
+									value={option.value}
+									onClick={(e) => handleBtnChange(e)}
+									className={`filter-btn ${
+										selectedBtn === option.value && 'selected-btn'
+									}`}
+								>
+									{option.text}
+								</button>
+							))}
+					</div>
 				</div>
 				<div className='expert-list-wrapper'></div>
 			</div>
 		</>
 	);
 };
+const mapStateToProps = (state) => ({
+	options: state.interact.options,
+});
 
-export default HomepageRegular;
+export default connect(mapStateToProps)(HomepageRegular);

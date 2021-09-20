@@ -4,11 +4,11 @@ import SignUpExpert from './sign_up_expert';
 // React Router
 import { useLocation, useHistory } from 'react-router-dom';
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { signUp } from '../../redux/actions/auth.action';
 
 //
-const SignUp = () => {
+const SignUp = ({ options }) => {
 	// Redux
 	const dispatch = useDispatch();
 	// URL Location
@@ -48,6 +48,7 @@ const SignUp = () => {
 				/>
 			) : (
 				<SignUpExpert
+					options={options}
 					handleSubmit={handleSubmit}
 					state={user}
 					handleChange={handleStateChange}
@@ -56,5 +57,6 @@ const SignUp = () => {
 		</>
 	);
 };
+const mapStateToProps = (state) => ({ options: state.interact.options });
 
-export default SignUp;
+export default connect(mapStateToProps)(SignUp);
