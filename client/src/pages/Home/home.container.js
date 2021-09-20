@@ -14,11 +14,11 @@ const HomepageContainer = ({ isLogedIn, userType }) => {
 
 	// Check if the user is loged in,if not redirects it to the login page
 	useEffect(() => {
-		isLogedIn === false && history.push('/auth');
+		// isLogedIn === false && history.push('/auth');
 	}, []);
 
 	return (
-		<>{userType === 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
+		<>{userType !== 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
 	);
 };
 
