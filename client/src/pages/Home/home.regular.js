@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './home-regular.style.scss';
 // Images
 import Profile from '../../images/user.svg';
+
 // Redux
 import { connect } from 'react-redux';
 // React Router
@@ -9,6 +10,7 @@ import { Link } from 'react-router-dom';
 // Components
 import Navbar from '../../components/navbar/navbar.component';
 import Input from '../../components/input/input.component';
+import ExpertList from '../../components/expert/expert-list.component';
 
 // Code
 const HomepageRegular = ({ options }) => {
@@ -28,8 +30,8 @@ const HomepageRegular = ({ options }) => {
 			</Navbar>
 
 			<div className='main-content-wrapper'>
+				{/* Filters Component */}
 				<div className='filter-wrapper'>
-					{/* Search Component */}
 					<div className='filter-container'>
 						<Input
 							type='text'
@@ -38,8 +40,6 @@ const HomepageRegular = ({ options }) => {
 							label='Search'
 							isSearch={true}
 						/>
-						{/* Filters Component */}
-
 						<label>Development</label>
 						{options
 							.filter((option) => option.group === 'development')
@@ -137,8 +137,9 @@ const HomepageRegular = ({ options }) => {
 								</button>
 							))}
 					</div>
+					{/* End of Filters Component */}
 				</div>
-				<div className='expert-list-wrapper'></div>
+				<ExpertList />
 			</div>
 		</>
 	);
