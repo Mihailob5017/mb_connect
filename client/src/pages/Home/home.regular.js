@@ -4,20 +4,42 @@ import './home-regular.style.scss';
 import Profile from '../../images/user.svg';
 
 // Redux
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import {
+	setSearchParamTitle,
+	setSearchParamName,
+} from '../../redux/actions/interact.action';
 // React Router
 import { Link } from 'react-router-dom';
+
 // Components
 import Navbar from '../../components/navbar/navbar.component';
 import Input from '../../components/input/input.component';
 import ExpertList from '../../components/expert/expert-list.component';
 
 // Code
-const HomepageRegular = ({ options, experts }) => {
+const HomepageRegular = ({ options }) => {
 	const [selectedBtn, changeSelectedColor] = useState('all-types');
+	const [searchInput, setSearchInput] = useState('');
+	const dispatch = useDispatch();
 
 	const handleBtnChange = (e) => {
 		changeSelectedColor(e.target.value);
+		dispatch(setSearchParamName(''));
+		setSearchInput('');
+		dispatch(setSearchParamTitle(e.target.value));
+	};
+
+	const handleSearch = () => {
+		if (searchInput.length < 3) {
+			alert('Please type more Characters');
+			setSearchInput('');
+			return;
+		} else {
+			dispatch(setSearchParamTitle('all-types'));
+			changeSelectedColor('all-types');
+			dispatch(setSearchParamName(searchInput));
+		}
 	};
 
 	return (
@@ -34,17 +56,21 @@ const HomepageRegular = ({ options, experts }) => {
 				<div className='filter-wrapper'>
 					<div className='filter-container'>
 						<Input
+							value={searchInput}
+							handleChange={(name, value) => setSearchInput(value)}
 							type='text'
 							customClass='margin-2'
 							name='search'
 							label='Search'
 							isSearch={true}
+							searchHandler={handleSearch}
 						/>
 						<label>Development</label>
 						{options
 							.filter((option) => option.group === 'development')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -57,8 +83,9 @@ const HomepageRegular = ({ options, experts }) => {
 						<label>Design</label>
 						{options
 							.filter((option) => option.group === 'design')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -71,8 +98,9 @@ const HomepageRegular = ({ options, experts }) => {
 						<label>Education</label>
 						{options
 							.filter((option) => option.group === 'education')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -97,8 +125,9 @@ const HomepageRegular = ({ options, experts }) => {
 						<label>Support</label>
 						{options
 							.filter((option) => option.group === 'support')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -111,8 +140,9 @@ const HomepageRegular = ({ options, experts }) => {
 						<label>Art</label>
 						{options
 							.filter((option) => option.group === 'art')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -125,8 +155,9 @@ const HomepageRegular = ({ options, experts }) => {
 						<label>Sales</label>
 						{options
 							.filter((option) => option.group === 'sales')
-							.map((option) => (
+							.map((option, i) => (
 								<button
+									key={i}
 									value={option.value}
 									onClick={(e) => handleBtnChange(e)}
 									className={`filter-btn ${
@@ -139,14 +170,13 @@ const HomepageRegular = ({ options, experts }) => {
 					</div>
 					{/* End of Filters Component */}
 				</div>
-				<ExpertList experts={experts} />
+				<ExpertList />
 			</div>
 		</>
 	);
 };
 const mapStateToProps = (state) => ({
 	options: state.interact.options,
-	experts: state.interact.experts,
 });
 
 export default connect(mapStateToProps)(HomepageRegular);

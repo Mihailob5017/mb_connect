@@ -1,4 +1,8 @@
-import { SET_USER_TYPE } from '../types';
+import {
+	SET_SEARCH_NAME_PARAM,
+	SET_SEARCH_TITLE_PARAM,
+	SET_USER_TYPE,
+} from '../types';
 
 const INITIAL_STATE = {
 	user_type: '',
@@ -94,6 +98,7 @@ const INITIAL_STATE = {
 			last_name: 'Boskovic',
 			price: '50',
 			title: 'Frontend Developer',
+			type: 'frontend-developer',
 		},
 		{
 			id: '2',
@@ -101,6 +106,7 @@ const INITIAL_STATE = {
 			last_name: 'Imperl',
 			price: '75',
 			title: 'Industy Designer',
+			type: 'industry-designer',
 		},
 		{
 			id: '3',
@@ -108,6 +114,7 @@ const INITIAL_STATE = {
 			last_name: 'Stamenkovic',
 			price: '25',
 			title: 'Customer Support',
+			type: 'customer-support',
 		},
 		{
 			id: '4',
@@ -115,6 +122,7 @@ const INITIAL_STATE = {
 			last_name: 'Pavlovic',
 			price: '30',
 			title: 'PR Support',
+			type: 'pr-support',
 		},
 		{
 			id: '5',
@@ -122,20 +130,23 @@ const INITIAL_STATE = {
 			last_name: 'Malesevic',
 			price: '90',
 			title: 'Modern Artist',
+			type: 'modern-art',
 		},
 		{
 			id: '6',
 			first_name: 'Igor',
 			last_name: 'Milojkovic',
 			price: '5',
-			title: 'Supplies Manager',
+			title: 'Salesman',
+			type: 'salesman',
 		},
 		{
 			id: '7',
 			first_name: 'Jelisaveta',
 			last_name: 'Vukovic',
 			price: '40',
-			title: 'Industry Manager',
+			title: 'Client Manager',
+			type: 'client-manager',
 		},
 	],
 };
@@ -144,6 +155,10 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case SET_USER_TYPE:
 			return { ...state, is_loged_in: true, user_type: action.payload };
+		case SET_SEARCH_NAME_PARAM:
+			return { ...state, search_param_name: action.payload };
+		case SET_SEARCH_TITLE_PARAM:
+			return { ...state, search_param_title: action.payload };
 
 		default:
 			return state;
