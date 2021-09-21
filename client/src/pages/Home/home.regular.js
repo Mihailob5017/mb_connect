@@ -13,7 +13,7 @@ import Input from '../../components/input/input.component';
 import ExpertList from '../../components/expert/expert-list.component';
 
 // Code
-const HomepageRegular = ({ options }) => {
+const HomepageRegular = ({ options, experts }) => {
 	const [selectedBtn, changeSelectedColor] = useState('all-types');
 
 	const handleBtnChange = (e) => {
@@ -139,13 +139,14 @@ const HomepageRegular = ({ options }) => {
 					</div>
 					{/* End of Filters Component */}
 				</div>
-				<ExpertList />
+				<ExpertList experts={experts} />
 			</div>
 		</>
 	);
 };
 const mapStateToProps = (state) => ({
 	options: state.interact.options,
+	experts: state.interact.experts,
 });
 
 export default connect(mapStateToProps)(HomepageRegular);
