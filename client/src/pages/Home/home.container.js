@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 // React Router
 import { useHistory } from 'react-router-dom';
 // Redux
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import { getAllExperts } from '../../redux/actions/interact.action';
 
 // Components
 import ExpertHomepage from './home.expert';
@@ -11,14 +12,15 @@ import RegularHomepage from './home.regular';
 const HomepageContainer = ({ isLogedIn, userType }) => {
 	// Variables
 	const history = useHistory();
-
+	const dispatch = useDispatch();
 	// Check if the user is loged in,if not redirects it to the login page
 	useEffect(() => {
-		// isLogedIn === false && history.push('/auth');
+		dispatch(getAllExperts());
+		isLogedIn === false && history.push('/auth');
 	}, []);
 
 	return (
-		<>{userType !== 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
+		<>{userType === 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
 	);
 };
 

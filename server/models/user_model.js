@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
 	// Id's of experts that accepted the request
 	accepted_requests: { type: [String], default: [] },
 	// EXPERT USERS
+	price: { type: String },
 	about_me: { type: String },
 	service: { type: String, default: '' },
 	// Is the expert Free/Taken/Disabled
@@ -25,4 +26,5 @@ const userSchema = mongoose.Schema({
 	pending_requests: { type: [String], default: [] },
 });
 
-export default mongoose.model('user', userSchema);
+const UserModel = mongoose.model('user', userSchema);
+export default UserModel;

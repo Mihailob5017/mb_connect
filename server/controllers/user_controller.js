@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../models/user_model.js';
 
+// SIGN IN FUNCTION
 export const signIn = async (req, res) => {
 	const { email, password, isAuthByGoogle } = req.body;
 	console.log(email);
@@ -48,7 +49,9 @@ export const signIn = async (req, res) => {
 		return;
 	}
 };
+// END OF SIGN IN
 
+// SIGN UP
 export const signUp = async (req, res) => {
 	const { first_name, last_name, email, password, profile_pic, is_regular } =
 		req.body;
@@ -78,9 +81,12 @@ export const signUp = async (req, res) => {
 				accepted_requests:
 					is_regular === true ? req.body.accepted_requests : null,
 				// Expert User Exclusive
+				price: is_regular === false ? req.body.price : null,
 				status: is_regular === false ? req.body.status : null,
 				pending_requests:
 					is_regular === false ? req.body.pending_requests : null,
+				about_me: is_regular === false ? req.body.about_me : null,
+				service: is_regular === false ? req.body.service : null,
 			};
 			const result = await User.create(newUser);
 			res.status(200).json({
@@ -98,5 +104,16 @@ export const signUp = async (req, res) => {
 		});
 		console.error(error);
 		return;
+	}
+};
+// END OF SIGN UP
+
+export const getAllExperts = async (req, res) => {
+	try {
+		const users = await User.find({ is_regular: false });
+		res.status(200).json(users);
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+		console.error(error);
 	}
 };

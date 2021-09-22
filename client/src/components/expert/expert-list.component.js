@@ -13,14 +13,14 @@ const ExpertList = ({ experts = [], searchParamName, searchParamTitle }) => {
 		if (searchParamName !== '' && searchParamName.length >= 3)
 			return experts.filter((expert) => searchByInput(expert, searchParamName));
 		else if (searchParamTitle !== '' && searchParamTitle !== 'all-types')
-			return experts.filter((expert) => expert.type === searchParamTitle);
+			return experts.filter((expert) => expert.service === searchParamTitle);
 		else return experts;
 	};
 
 	return (
 		<div className='expert-list-wrapper'>
 			{filteredExperts(experts).map((expert) => (
-				<Expert key={expert.id} {...expert} />
+				<Expert key={expert._id} {...expert} />
 			))}
 		</div>
 	);

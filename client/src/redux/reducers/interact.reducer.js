@@ -2,6 +2,7 @@ import {
 	SET_SEARCH_NAME_PARAM,
 	SET_SEARCH_TITLE_PARAM,
 	SET_USER_TYPE,
+	GET_ALL_EXPERTS,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -35,7 +36,7 @@ const INITIAL_STATE = {
 		},
 		{
 			key: 'ui-designer',
-			text: 'UI/UX Designer',
+			text: 'UI Designer',
 			value: 'ui-designer',
 			group: 'design',
 		},
@@ -52,9 +53,9 @@ const INITIAL_STATE = {
 			group: 'education',
 		},
 		{
-			key: 'tech-support',
+			key: 'technical-support',
 			text: 'Technical Support',
-			value: 'tech-support',
+			value: 'technical-support',
 			group: 'support',
 		},
 		{
@@ -72,13 +73,13 @@ const INITIAL_STATE = {
 		{
 			key: 'abstract-art',
 			text: 'Abstract Artist',
-			value: 'abstract-art',
+			value: 'abstract-artist',
 			group: 'art',
 		},
 		{
 			key: 'modern-art',
 			text: 'Modern Artist',
-			value: 'modern-art',
+			value: 'modern-artist',
 			group: 'art',
 		},
 		{
@@ -91,64 +92,7 @@ const INITIAL_STATE = {
 	],
 	search_param_name: '',
 	search_param_title: '',
-	experts: [
-		{
-			id: '1',
-			first_name: 'Mihailo',
-			last_name: 'Boskovic',
-			price: '50',
-			title: 'Frontend Developer',
-			type: 'frontend-developer',
-		},
-		{
-			id: '2',
-			first_name: 'Ksenija',
-			last_name: 'Imperl',
-			price: '75',
-			title: 'Industy Designer',
-			type: 'industry-designer',
-		},
-		{
-			id: '3',
-			first_name: 'Nemanja',
-			last_name: 'Stamenkovic',
-			price: '25',
-			title: 'Customer Support',
-			type: 'customer-support',
-		},
-		{
-			id: '4',
-			first_name: 'Sanela',
-			last_name: 'Pavlovic',
-			price: '30',
-			title: 'PR Support',
-			type: 'pr-support',
-		},
-		{
-			id: '5',
-			first_name: 'Sabira',
-			last_name: 'Malesevic',
-			price: '90',
-			title: 'Modern Artist',
-			type: 'modern-art',
-		},
-		{
-			id: '6',
-			first_name: 'Igor',
-			last_name: 'Milojkovic',
-			price: '5',
-			title: 'Salesman',
-			type: 'salesman',
-		},
-		{
-			id: '7',
-			first_name: 'Jelisaveta',
-			last_name: 'Vukovic',
-			price: '40',
-			title: 'Client Manager',
-			type: 'client-manager',
-		},
-	],
+	experts: [],
 };
 
 const interactReducer = (state = INITIAL_STATE, action) => {
@@ -159,7 +103,8 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, search_param_name: action.payload };
 		case SET_SEARCH_TITLE_PARAM:
 			return { ...state, search_param_title: action.payload };
-
+		case GET_ALL_EXPERTS:
+			return { ...state, experts: action.payload };
 		default:
 			return state;
 	}

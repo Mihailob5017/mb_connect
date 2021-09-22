@@ -28,6 +28,7 @@ const SignUp = ({ options }) => {
 		phone_number: '',
 		about_me: '',
 		service: '',
+		price: 50,
 	});
 	// State Handler
 	const handleStateChange = (name, value) => {

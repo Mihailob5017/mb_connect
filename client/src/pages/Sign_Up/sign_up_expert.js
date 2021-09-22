@@ -59,6 +59,13 @@ const SignUpComponent = ({ state, handleChange, handleSubmit, options }) => {
 				<div className='sign-up-column'>
 					<div className='empty-space'></div>
 					<InputComponent
+						value={state.price}
+						handleChange={handleChange}
+						type='number'
+						name='price'
+						label='Hourly Price'
+					/>
+					<InputComponent
 						value={state.password}
 						handleChange={handleChange}
 						isPassword={true}
