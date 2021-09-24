@@ -2,6 +2,8 @@ import React from 'react';
 import './expert.style.scss';
 // Helper
 import { restructureServiceName } from '../../helpers/index';
+// React Router DOM
+import { Link } from 'react-router-dom';
 // Images
 import ConnectSVG from '../../images/link_white.svg';
 import ProfileSVG from '../../images/user_white.svg';
@@ -13,6 +15,7 @@ const Expert = ({
 	service,
 	price,
 	profile_pic,
+	accepted_requests,
 }) => {
 	return (
 		<div id={_id} className='expert-container'>
@@ -34,14 +37,22 @@ const Expert = ({
 				</div>
 				<p>{restructureServiceName(service)}</p>
 				<div className='button-container'>
-					<button className='expert-button'>
-						<img src={ConnectSVG} alt='Connect' />
-						<p>Connect</p>
-					</button>
-					<button className='expert-button'>
-						<img src={ProfileSVG} alt='Profile' />
-						<p>Profile</p>
-					</button>
+					{accepted_requests === null ? (
+						<>
+							<button className='expert-button'>
+								<img src={ConnectSVG} alt='Connect' />
+								<p>Connect</p>
+							</button>
+							<Link to={`/profile/${_id}`}>
+								<button className='expert-button'>
+									<img src={ProfileSVG} alt='Profile' />
+									<p>Profile</p>
+								</button>
+							</Link>
+						</>
+					) : (
+						<h1>Unavailable</h1>
+					)}
 				</div>
 			</div>
 		</div>
