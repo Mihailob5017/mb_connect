@@ -20,7 +20,7 @@ const HomepageContainer = ({ isLogedIn, userType }) => {
 	}, []);
 
 	return (
-		<>{userType !== 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
+		<>{userType === 'regular' ? <RegularHomepage /> : <ExpertHomepage />}</>
 	);
 };
 

@@ -6,6 +6,10 @@
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	&:hover {
+		transform: scale(1.05);
+		transition: 300ms;
+	}
 }
 .primary {
 	color: white;

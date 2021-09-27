@@ -1,0 +1,49 @@
+.main-content-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+
+	height: 90vh;
+	.info-container {
+		width: 20%;
+		border: 0.5px solid #999;
+		border-radius: 3px;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		.info-status {
+			margin: 5px 10px;
+			margin-bottom: 35px;
+			font-weight: lighter;
+			font-size: 45px;
+			label {
+				font-weight: normal;
+				color: #164a41;
+			}
+		}
+		.info-stats {
+			h1 {
+				margin: 5px 10px;
+				font-size: 35px;
+				font-weight: lighter;
+				label {
+					font-weight: normal;
+					color: #164a41;
+				}
+			}
+		}
+		.reverse-btn {
+			color: white;
+			border: 1px solid #164a41;
+			background: #164a41;
+		}
+	}
+}
+
+.requests-container {
+	width: 30%;
+	overflow-y: scroll;
+	height: 90%;
+	border: 0.5px solid #999;
+	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
