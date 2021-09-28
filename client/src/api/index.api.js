@@ -10,3 +10,7 @@ export const LogIn = (body) => axios.post(`${API_URL}/user/sign_in`, body);
 
 // Get Experts
 export const getExperts = () => axios.get(`${API_URL}/user/experts`);
+
+// Get Pending Users
+export const getPendingUsers = (requestsArr) =>
+	axios.get(`${API_URL}/request`, { pending_requests: requestsArr });

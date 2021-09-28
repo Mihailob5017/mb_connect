@@ -3,6 +3,7 @@ import {
 	SET_SEARCH_TITLE_PARAM,
 	SET_USER_TYPE,
 	GET_ALL_EXPERTS,
+	GET_ALL_REQUETS,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -93,6 +94,7 @@ const INITIAL_STATE = {
 	search_param_name: '',
 	search_param_title: '',
 	experts: [],
+	pending_users: [],
 };
 
 const interactReducer = (state = INITIAL_STATE, action) => {
@@ -105,6 +107,8 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, search_param_title: action.payload };
 		case GET_ALL_EXPERTS:
 			return { ...state, experts: action.payload };
+		case GET_ALL_REQUETS:
+			return { ...state, pending_users: action.payload };
 		default:
 			return state;
 	}
