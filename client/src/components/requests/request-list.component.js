@@ -2,43 +2,23 @@ import React from 'react';
 import './request.style.scss';
 // Components
 import Request from './request.component';
-// Code
-const requests = [
-	{
-		first_name: 'Mihailo',
-		last_name: 'Boskovic',
-		profile_pic: '',
-	},
-	{
-		first_name: 'Marko',
-		last_name: 'Hrnjak',
-		profile_pic: '',
-	},
-	{
-		first_name: 'Jovan ',
-		last_name: 'Stevanovic',
-		profile_pic: '',
-	},
-	{
-		first_name: 'Aleksa',
-		last_name: 'Gilisic',
-		profile_pic: '',
-	},
-	{
-		first_name: 'Borivoje',
-		last_name: 'Spalevic',
-		profile_pic: '',
-	},
-];
 
-const RequestList = () => {
+// Redux
+import { connect } from 'react-redux';
+
+// Code
+const RequestList = ({ request_users }) => {
 	return (
 		<div className='requests-container'>
-			{requests.map((element) => (
-				<Request id={element._id} {...element} />
+			{request_users.map((element) => (
+				<Request key={element._id} {...element} />
 			))}
 		</div>
 	);
 };
-//
-export default RequestList;
+
+const mapStateToProps = (state) => ({
+	request_users: state.interact.pending_users,
+});
+
+export default connect(mapStateToProps)(RequestList);

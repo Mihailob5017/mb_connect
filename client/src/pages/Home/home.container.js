@@ -3,20 +3,26 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 // Redux
 import { connect, useDispatch } from 'react-redux';
-import { getAllExperts } from '../../redux/actions/interact.action';
+import {
+	getAllExperts,
+	getAllRequests,
+} from '../../redux/actions/interact.action';
 
 // Components
 import ExpertHomepage from './home.expert';
 import RegularHomepage from './home.regular';
+
 // Code
-const HomepageContainer = ({ isLogedIn, userType }) => {
+const HomepageContainer = ({ isLogedIn, userType, pending_requests }) => {
 	// Variables
 	const history = useHistory();
 	const dispatch = useDispatch();
+
 	// Check if the user is loged in,if not redirects it to the login page
 	useEffect(() => {
-		dispatch(getAllExperts());
-		// isLogedIn === false && history.push('/auth');
+		if (isLogedIn === false) history.push('/auth');
+		else if (userType === '') dispatch(getAllExperts());
+		else dispatch(getAllRequests(pending_requests));
 	}, []);
 
 	return (
@@ -29,6 +35,7 @@ const mapStateToProps = (state) => {
 	return {
 		isLogedIn: state.interact.is_loged_in,
 		userType: state.interact.user_type,
+		pending_requests: state.auth.user?.pending_requests || [],
 	};
 };
 // Connecting

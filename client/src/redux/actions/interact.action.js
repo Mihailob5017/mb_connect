@@ -28,10 +28,10 @@ export const getAllExperts = () => async (dispatch) => {
 	}
 };
 
-export const getAllReuests = (idsArr) => async (dispatch) => {
+export const getAllRequests = (ids_Arr) => async (dispatch) => {
 	try {
-		const { data } = await api.getPendingUsers(idsArr);
-		dispatch({ type: GET_ALL_REQUETS, payload: data });
+		const { data } = await api.getPendingUsers(ids_Arr);
+		dispatch({ type: GET_ALL_REQUETS, payload: [...data.users] });
 	} catch (error) {
 		console.error(error);
 	}

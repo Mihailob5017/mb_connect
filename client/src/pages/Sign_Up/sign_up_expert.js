@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './sign_up.style.scss';
 import FileBase from 'react-file-base64';
 import Upload from '../../images/upload.svg';
+
 // Components
 import GreenScreen from '../../components/green-screen/green-screen.component';
 import CardComponent from '../../components/card/card.component';

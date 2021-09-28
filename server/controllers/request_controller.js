@@ -11,11 +11,9 @@ export const getAllRequests = async (req, res) => {
 
 			users.push(user);
 		}
-		console.log(pending_requests);
 		res.status(200).json({ users });
 	} catch (error) {
 		res.status(500).send(error);
-		console.log(error);
 		console.log(error.message);
 	}
 };
