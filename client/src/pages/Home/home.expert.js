@@ -8,6 +8,7 @@ import Requests from '../../images/bell.svg';
 import { Link } from 'react-router-dom';
 
 //Redux
+import { connect } from 'react-redux';
 
 // Components
 import Navbar from '../../components/navbar/navbar.component';
@@ -16,14 +17,14 @@ import RequestList from '../../components/requests/request-list.component';
 
 // Code
 
-const HomepageExpert = () => {
+const HomepageExpert = ({ requests }) => {
 	return (
 		<>
 			<Navbar>
 				<button className='profile-btn'>
 					<img src={Requests} alt='Profile Icon' />
 					<Link to='/'>
-						<label>0</label>Requests
+						<label>{requests.length}</label>Requests
 					</Link>
 				</button>
 				<button className='profile-btn'>
@@ -52,10 +53,12 @@ const HomepageExpert = () => {
 					</div>
 					<Button extraStyle='reverse-btn'>Set To Unavailable</Button>
 				</div>
-				<RequestList />
+				<RequestList request_users={requests} />
 			</div>
 		</>
 	);
 };
-
-export default HomepageExpert;
+const mapStateToProps = (state) => ({
+	requests: state.interact.pending_users,
+});
+export default connect(mapStateToProps)(HomepageExpert);

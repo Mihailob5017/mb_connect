@@ -17,3 +17,23 @@ export const getAllRequests = async (req, res) => {
 		console.log(error.message);
 	}
 };
+
+// Connect to the expert
+export const connectToExpert = async (req, res) => {
+	const { userId, expertId } = req.body;
+
+	try {
+		// Add your id to pending Requests
+		const updatedExpert = await User.findByIdAndUpdate(expertId, {
+			$push: { pending_requests: userId },
+		});
+		// Add requests
+		const updatedUser = await User.findByIdAndUpdate(userId, {
+			$push: { sent_requests: { expert_id: expertId, status: 'waiting' } },
+		});
+		res.status(200).send('Success');
+	} catch (error) {
+		res.status(500).send(error);
+		console.log(error.message);
+	}
+};

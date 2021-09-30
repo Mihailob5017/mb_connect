@@ -3,9 +3,6 @@ import './request.style.scss';
 // Components
 import Request from './request.component';
 
-// Redux
-import { connect } from 'react-redux';
-
 // Code
 const RequestList = ({ request_users }) => {
 	return (
@@ -17,8 +14,4 @@ const RequestList = ({ request_users }) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	request_users: state.interact.pending_users,
-});
-
-export default connect(mapStateToProps)(RequestList);
+export default RequestList;

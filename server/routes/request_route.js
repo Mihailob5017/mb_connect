@@ -1,7 +1,11 @@
 import express from 'express';
-import { getAllRequests } from '../controllers/request_controller.js';
+import {
+	connectToExpert,
+	getAllRequests,
+} from '../controllers/request_controller.js';
 const router = express.Router();
 
 router.post('/', getAllRequests);
+router.post('/connect', connectToExpert);
 
 export default router;
