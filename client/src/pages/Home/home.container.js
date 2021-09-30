@@ -21,7 +21,7 @@ const HomepageContainer = ({ isLogedIn, userType, pending_requests }) => {
 	// Check if the user is loged in,if not redirects it to the login page
 	useEffect(() => {
 		if (isLogedIn === false) history.push('/auth');
-		else if (userType === '') dispatch(getAllExperts());
+		else if (userType === 'regular') dispatch(getAllExperts());
 		else dispatch(getAllRequests(pending_requests));
 	}, []);
 
