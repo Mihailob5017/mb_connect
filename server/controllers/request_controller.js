@@ -24,14 +24,19 @@ export const connectToExpert = async (req, res) => {
 
 	try {
 		// Add your id to pending Requests
-		const updatedExpert = await User.findByIdAndUpdate(expertId, {
+		await User.findByIdAndUpdate(expertId, {
 			$push: { pending_requests: userId },
 		});
 		// Add requests
 		const updatedUser = await User.findByIdAndUpdate(userId, {
 			$push: { sent_requests: { expert_id: expertId, status: 'waiting' } },
 		});
-		res.status(200).send('Success');
+		const allExperts = await User.find({ is_regular: false });
+
+		res.status(200).send({
+			user: updatedUser,
+			experts: allExperts,
+		});
 	} catch (error) {
 		res.status(500).send(error);
 		console.log(error.message);

@@ -4,8 +4,9 @@ import {
 	SET_USER_TYPE,
 	GET_ALL_EXPERTS,
 	GET_ALL_REQUETS,
+	CONNECT_TO_EXPERT,
 } from '../types';
-
+import { replaceElementInArray } from '../../helpers/index';
 const INITIAL_STATE = {
 	user_type: '',
 	is_loged_in: false,
@@ -109,6 +110,12 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, experts: action.payload };
 		case GET_ALL_REQUETS:
 			return { ...state, pending_users: action.payload };
+		case CONNECT_TO_EXPERT: {
+			return {
+				...state,
+				experts: action.payload.experts,
+			};
+		}
 		default:
 			return state;
 	}

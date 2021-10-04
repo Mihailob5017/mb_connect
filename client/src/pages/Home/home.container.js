@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 	return {
 		isLogedIn: state.interact.is_loged_in,
 		userType: state.interact.user_type,
-		pending_requests: state.auth.user?.pending_requests || [],
+		pending_requests: state.user.user?.pending_requests || [],
 	};
 };
 // Connecting

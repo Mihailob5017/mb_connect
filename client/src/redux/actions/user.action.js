@@ -6,9 +6,11 @@ import {
 	LOG_IN_START,
 	LOG_IN_SUCCESS,
 	SET_USER_TYPE,
+	CONNECT_TO_EXPERT,
 } from '../types';
 
 import * as api from '../../api/index.api';
+import { replaceExpert } from './interact.action';
 
 // import { setUserType } from './interact.action';
 export const signUp = (user, history) => async (dispatch) => {
@@ -76,5 +78,15 @@ export const logIn = (body, history) => async (dispatch) => {
 		alert('Server Error');
 		// Replace with function that alerts the user about the error
 		return;
+	}
+};
+
+export const connectToExpert = (userId, expertId) => async (dispatch) => {
+	try {
+		const { data } = await api.connect(userId, expertId);
+		const { user, experts } = data;
+		dispatch({ type: CONNECT_TO_EXPERT, payload: { user, experts } });
+	} catch (error) {
+		console.log(error);
 	}
 };

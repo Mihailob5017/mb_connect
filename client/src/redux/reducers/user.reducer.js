@@ -1,4 +1,6 @@
 import {
+	CONNECT_TO_EXPERT,
+	CONNECT_WITH_EXPERT,
 	LOG_IN_FAILURE,
 	LOG_IN_START,
 	LOG_IN_SUCCESS,
@@ -14,7 +16,7 @@ const INITIAL_STATE = {
 	message: null, // Success Message
 };
 
-const authReducer = (state = INITIAL_STATE, action) => {
+const userReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		// SIGN UP PROCCESS
 		case SIGN_UP_START:
@@ -35,9 +37,16 @@ const authReducer = (state = INITIAL_STATE, action) => {
 				sign_status: false,
 				error: action.payload,
 			};
+
+		case CONNECT_TO_EXPERT:
+			return {
+				...state,
+				user: action.payload.user,
+			};
+
 		default:
 			return state;
 	}
 };
 
-export default authReducer;
+export default userReducer;

@@ -1,13 +1,20 @@
 import React from 'react';
 import './expert.style.scss';
 // Redux
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import { connectToExpert } from '../../redux/actions/user.action';
 // Components
 import Expert from './expert-single.component';
 // Helper Functions
 import { searchByInput } from '../../helpers/index';
 // Code
-const ExpertList = ({ experts = [], searchParamName, searchParamTitle }) => {
+const ExpertList = ({
+	experts = [],
+	searchParamName,
+	searchParamTitle,
+	userId,
+}) => {
+	const dispatch = useDispatch();
 	// Filters Experts by specific param
 	const filteredExperts = (experts) => {
 		if (searchParamName !== '' && searchParamName.length >= 3)
@@ -20,13 +27,19 @@ const ExpertList = ({ experts = [], searchParamName, searchParamTitle }) => {
 	return (
 		<div className='expert-list-wrapper'>
 			{filteredExperts(experts).map((expert) => (
-				<Expert key={expert._id} {...expert} />
+				<Expert
+					userId={userId}
+					handleClick={() => dispatch(connectToExpert(userId, expert._id))}
+					key={expert._id}
+					{...expert}
+				/>
 			))}
 		</div>
 	);
 };
 
 const mapStateToProps = (state) => ({
+	userId: state.user.user._id,
 	experts: state.interact.experts,
 	searchParamName: state.interact.search_param_name,
 	searchParamTitle: state.interact.search_param_title,

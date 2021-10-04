@@ -14,3 +14,7 @@ export const getExperts = () => axios.get(`${API_URL}/user/experts`);
 // Get Pending Users
 export const getPendingUsers = (requestsArr) =>
 	axios.post(`${API_URL}/request`, { pending_requests: requestsArr });
+
+// Send Request
+export const connect = (userId, expertId) =>
+	axios.post(`${API_URL}/request/connect`, { userId, expertId });

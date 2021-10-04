@@ -5,7 +5,7 @@ import SignUpExpert from './sign_up_expert';
 import { useLocation, useHistory } from 'react-router-dom';
 // Redux
 import { useDispatch, connect } from 'react-redux';
-import { signUp } from '../../redux/actions/auth.action';
+import { signUp } from '../../redux/actions/user.action';
 
 //
 const SignUp = ({ options }) => {

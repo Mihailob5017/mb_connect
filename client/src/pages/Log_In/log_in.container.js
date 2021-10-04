@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginPage from './log_in';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/actions/auth.action';
+import { logIn } from '../../redux/actions/user.action';
 import { useHistory } from 'react-router';
 const LogIn = () => {
 	const dispatch = useDispatch();

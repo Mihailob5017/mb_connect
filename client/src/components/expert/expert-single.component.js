@@ -9,13 +9,15 @@ import ConnectSVG from '../../images/link_white.svg';
 import ProfileSVG from '../../images/user_white.svg';
 
 const Expert = ({
+	userId,
 	_id,
 	first_name,
 	last_name,
 	service,
 	price,
 	profile_pic,
-	accepted_requests,
+	pending_requests,
+	handleClick,
 }) => {
 	return (
 		<div id={_id} className='expert-container'>
@@ -37,9 +39,9 @@ const Expert = ({
 				</div>
 				<p>{restructureServiceName(service)}</p>
 				<div className='button-container'>
-					{accepted_requests === null ? (
+					{pending_requests.find((el) => el === userId) !== userId ? (
 						<>
-							<button className='expert-button'>
+							<button onClick={handleClick} className='expert-button'>
 								<img src={ConnectSVG} alt='Connect' />
 								<p>Connect</p>
 							</button>
@@ -51,7 +53,7 @@ const Expert = ({
 							</Link>
 						</>
 					) : (
-						<h1>Unavailable</h1>
+						<h1>Waiting Response</h1>
 					)}
 				</div>
 			</div>
