@@ -40,9 +40,8 @@ const Expert = ({
 				</div>
 				<p>{restructureServiceName(service)}</p>
 				<div className='button-container'>
-					{status === 'unavailable' ? (
-						<h1>Unavailable</h1>
-					) : pending_requests.find((el) => el === userId) !== userId ? (
+					{pending_requests.find((el) => el === userId) !== userId &&
+					status === 'available' ? (
 						<>
 							<button onClick={handleClick} className='expert-button'>
 								<img src={ConnectSVG} alt='Connect' />
@@ -55,8 +54,10 @@ const Expert = ({
 								</button>
 							</Link>
 						</>
-					) : (
+					) : status === 'unavailable' ? (
 						<h1>Waiting Response</h1>
+					) : (
+						<h1>Unavailable</h1>
 					)}
 				</div>
 			</div>
