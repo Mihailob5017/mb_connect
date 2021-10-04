@@ -18,3 +18,6 @@ export const getPendingUsers = (requestsArr) =>
 // Send Request
 export const connect = (userId, expertId) =>
 	axios.post(`${API_URL}/request/connect`, { userId, expertId });
+
+export const setStatus = (status, _id) =>
+	axios.post(`${API_URL}/user/status`, { status, _id });

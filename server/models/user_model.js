@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
 	// 		Busy = _id of user
 	// 		Unavailable = 'unavailbable'
 	// 		Free = ''
-	status: { type: String, default: '' },
+	status: { type: String, default: 'available' },
 
 	// Expert Stats - An array of all the accepted requests and all the declined requests
 	// In the array are ID'S of users that have been approved/declined

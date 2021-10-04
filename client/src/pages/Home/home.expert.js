@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './home-expert.style.scss';
 // Images
 import Profile from '../../images/user.svg';
@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 
 //Redux
 import { connect } from 'react-redux';
+// Api
+import * as api from '../../api/index.api';
 
 // Components
 import Navbar from '../../components/navbar/navbar.component';
@@ -16,8 +18,19 @@ import Button from '../../components/button/button.component';
 import RequestList from '../../components/requests/request-list.component';
 
 // Code
-
-const HomepageExpert = ({ requests }) => {
+const HomepageExpert = ({ requests, user }) => {
+	const [available, setAvailable] = useState(
+		user.status === 'available' ? true : false
+	);
+	console.log(user);
+	const handleAvailable = async () => {
+		setAvailable(!available);
+		const res = await api.setStatus(
+			available !== true ? 'available' : 'unavailable',
+			user._id
+		);
+		alert(res.data);
+	};
 	return (
 		<>
 			<Navbar>
@@ -35,7 +48,8 @@ const HomepageExpert = ({ requests }) => {
 			<div className='main-content-wrapper'>
 				<div className='info-container'>
 					<h1 className='info-status'>
-						Current Status: <label>Active</label>
+						Current Status:
+						<label> {available === true ? 'Available' : 'Unavailable'}</label>
 					</h1>
 					<div className='info-stats'>
 						<h1>
@@ -51,7 +65,9 @@ const HomepageExpert = ({ requests }) => {
 							Total Money Earned: <label>$250</label>
 						</h1>
 					</div>
-					<Button extraStyle='reverse-btn'>Set To Unavailable</Button>
+					<Button handleClick={handleAvailable} extraStyle='reverse-btn'>
+						Set To {available === true ? 'Unavailable' : 'Available'}
+					</Button>
 				</div>
 				<RequestList request_users={requests} />
 			</div>
@@ -60,5 +76,6 @@ const HomepageExpert = ({ requests }) => {
 };
 const mapStateToProps = (state) => ({
 	requests: state.interact.pending_users,
+	user: state.user.user || {},
 });
 export default connect(mapStateToProps)(HomepageExpert);

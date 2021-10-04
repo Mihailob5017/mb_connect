@@ -115,3 +115,22 @@ export const getAllExperts = async (req, res) => {
 		console.error(error);
 	}
 };
+
+// Set user to Free/Taken/Unavailable
+export const setStatus = async (req, res) => {
+	try {
+		const { status, _id } = req.body;
+		console.log(status);
+		console.log(_id);
+		await User.findByIdAndUpdate(_id, { status });
+		res.status(200).send(`You'r status is now set to ${statusCheck(status)}`);
+	} catch (error) {
+		res.status(500).send('Server Error');
+	}
+};
+
+const statusCheck = (status) => {
+	if (status === 'unavailable') return 'Unavailable';
+	else if (status === 'available') return 'Available';
+	else return 'Busy';
+};
