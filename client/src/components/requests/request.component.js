@@ -34,12 +34,6 @@ const Request = ({ _id, first_name, last_name, profile_pic }) => {
 						<img src={Decline} alt='Decline' />
 						<p>Decline</p>
 					</button>
-					<Link to={`/user/${_id}`}>
-						<button className='request-btn profile-btn'>
-							<img src={User} alt='Profile' />
-							<p>Profile</p>
-						</button>
-					</Link>
 				</div>
 			</div>
 		</div>

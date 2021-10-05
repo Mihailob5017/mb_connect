@@ -40,10 +40,6 @@ const HomepageExpert = ({ requests, user }) => {
 						<label>{requests.length}</label>Requests
 					</Link>
 				</button>
-				<button className='profile-btn'>
-					<img src={Profile} alt='Profile Icon' />
-					<Link to='/profile'>Profile</Link>
-				</button>
 			</Navbar>
 			<div className='main-content-wrapper'>
 				<div className='info-container'>

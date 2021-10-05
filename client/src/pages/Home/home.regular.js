@@ -43,12 +43,7 @@ const HomepageRegular = ({ options }) => {
 
 	return (
 		<>
-			<Navbar>
-				<button className='profile-btn'>
-					<img src={Profile} alt='Profile Icon' />
-					<Link to='/profile'>Profile</Link>
-				</button>
-			</Navbar>
+			<Navbar></Navbar>
 
 			<div className='main-content-wrapper'>
 				{/* Filters Component */}
