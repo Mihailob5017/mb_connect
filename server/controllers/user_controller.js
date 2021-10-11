@@ -76,8 +76,6 @@ export const signUp = async (req, res) => {
 				// Regular User Exclusive
 				address: is_regular === true ? req.body.address : null,
 				phone_number: is_regular === true ? req.body.phone_number : null,
-				accepted_requests:
-					is_regular === true ? req.body.accepted_requests : null,
 				// Expert User Exclusive
 				price: is_regular === false ? req.body.price : null,
 				status: is_regular === false ? req.body.status : null,

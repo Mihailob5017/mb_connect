@@ -51,23 +51,19 @@ export const acceptRequest = async (req, res) => {
 		// Adds the id to accepted requests
 		await User.findByIdAndUpdate(_id, {
 			$push: { accepted_requests: usersId },
-			status: 'unavailable',
-		});
-		// // Removes the id from pending requests
-		await User.findByIdAndUpdate(_id, {
 			$pull: { pending_requests: usersId },
 		});
+		const updatedUser = await User.findById(_id);
 		// Sets the status of the request to accepted
 		let { sent_requests } = await User.findById(usersId);
 		for (let request of sent_requests) {
-			console.log(request);
 			if (request.expert_id === _id) request.status = 'accepted';
 		}
-		console.log('----------------------');
-		console.log(sent_requests);
+
 		await User.findByIdAndUpdate(usersId, { sent_requests });
 		res.status(200).send({
-			message: 'Success',
+			message: 'You have accepted the Request',
+			updatedUser: updatedUser,
 		});
 	} catch (error) {
 		res.status(500).send(error);
@@ -76,4 +72,27 @@ export const acceptRequest = async (req, res) => {
 };
 
 // Decline Connection Request
-export const declineRequest = async (req, res) => {};
+export const declineRequest = async (req, res) => {
+	const { _id, usersId } = req.body;
+	try {
+		// Adds the id to accepted requests
+		await User.findByIdAndUpdate(_id, {
+			$push: { declined_requests: usersId },
+			$pull: { pending_requests: usersId },
+		});
+		const updatedUser = await User.findById(_id);
+		// Sets the status of the request to accepted
+		let { sent_requests } = await User.findById(usersId);
+		for (let request of sent_requests) {
+			if (request.expert_id === _id) request.status = 'declined';
+		}
+		await User.findByIdAndUpdate(usersId, { sent_requests });
+		res.status(200).send({
+			message: 'You have declined the Request',
+			updatedUser: updatedUser,
+		});
+	} catch (error) {
+		res.status(500).send(error);
+		console.log(error);
+	}
+};
