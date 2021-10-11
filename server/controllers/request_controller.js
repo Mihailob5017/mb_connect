@@ -52,15 +52,18 @@ export const acceptRequest = async (req, res) => {
 		await User.findByIdAndUpdate(_id, {
 			$push: { accepted_requests: usersId },
 		});
-		// Removes the id from pending requests
+		// // Removes the id from pending requests
 		await User.findByIdAndUpdate(_id, {
 			$pull: { pending_requests: usersId },
 		});
 		// Sets the status of the request to accepted
 		let { sent_requests } = await User.findById(usersId);
-		for (request of sent_requests) {
+		for (let request of sent_requests) {
+			console.log(request);
 			if (request.expert_id === _id) request.status = 'accepted';
 		}
+		console.log('----------------------');
+		console.log(sent_requests);
 		await User.findByIdAndUpdate(usersId, { sent_requests });
 		res.status(200).send({
 			message: 'Success',
