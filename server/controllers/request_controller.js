@@ -51,6 +51,7 @@ export const acceptRequest = async (req, res) => {
 		// Adds the id to accepted requests
 		await User.findByIdAndUpdate(_id, {
 			$push: { accepted_requests: usersId },
+			status: 'unavailable',
 		});
 		// // Removes the id from pending requests
 		await User.findByIdAndUpdate(_id, {
