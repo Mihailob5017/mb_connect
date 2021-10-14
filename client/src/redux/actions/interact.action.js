@@ -4,7 +4,6 @@ import {
 	SET_SEARCH_NAME_PARAM,
 	SET_SEARCH_TITLE_PARAM,
 	SET_USER_TYPE,
-	CONNECT_TO_EXPERT,
 } from '../types';
 import * as api from '../../api/index.api';
 
@@ -37,8 +36,3 @@ export const getAllRequests = (ids_Arr) => async (dispatch) => {
 		console.error(error);
 	}
 };
-
-// export const replaceExpert = (expert) => ({
-// 	type: CONNECT_TO_EXPERT,
-// 	payload: expert,
-// });

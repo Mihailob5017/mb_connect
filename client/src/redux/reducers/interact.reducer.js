@@ -5,8 +5,9 @@ import {
 	GET_ALL_EXPERTS,
 	GET_ALL_REQUETS,
 	CONNECT_TO_EXPERT,
+	ACCEPT_REQUEST,
 } from '../types';
-import { replaceElementInArray } from '../../helpers/index';
+import { filterPendingUsers } from '../../helpers/index';
 const INITIAL_STATE = {
 	user_type: '',
 	is_loged_in: false,
@@ -116,6 +117,14 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 				experts: action.payload.experts,
 			};
 		}
+		case ACCEPT_REQUEST:
+			return {
+				...state,
+				pending_users: filterPendingUsers(
+					state.pending_users,
+					action.payload.removedUserId
+				),
+			};
 		default:
 			return state;
 	}

@@ -65,7 +65,7 @@ const HomepageExpert = ({ requests, user }) => {
 						Set To {available === true ? 'Unavailable' : 'Available'}
 					</Button>
 				</div>
-				<RequestList request_users={requests} />
+				<RequestList Id={user._id} request_users={requests} />
 			</div>
 		</>
 	);

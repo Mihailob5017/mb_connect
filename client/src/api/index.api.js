@@ -21,3 +21,9 @@ export const connect = (userId, expertId) =>
 
 export const setStatus = (status, _id) =>
 	axios.post(`${API_URL}/user/status`, { status, _id });
+
+export const acceptRequest = (_id, usersId) =>
+	axios.post(`${API_URL}/request/connect/accept`, { _id, usersId });
+
+export const declineRequest = (_id, usersId) =>
+	axios.post(`${API_URL}/request/connect/accept`, { _id, usersId });

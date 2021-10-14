@@ -7,6 +7,7 @@ import {
 	LOG_IN_SUCCESS,
 	SET_USER_TYPE,
 	CONNECT_TO_EXPERT,
+	ACCEPT_REQUEST,
 } from '../types';
 
 import * as api from '../../api/index.api';
@@ -86,6 +87,17 @@ export const connectToExpert = (userId, expertId) => async (dispatch) => {
 		const { data } = await api.connect(userId, expertId);
 		const { user, experts } = data;
 		dispatch({ type: CONNECT_TO_EXPERT, payload: { user, experts } });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const acceptRequest = (_id, usersId) => async (dispatch) => {
+	try {
+		const { data } = await api.acceptRequest(_id, usersId);
+		const { message, updatedUser, removedUserId } = data;
+		alert(message);
+		dispatch({ type: ACCEPT_REQUEST, payload: { updatedUser, removedUserId } });
 	} catch (error) {
 		console.log(error);
 	}

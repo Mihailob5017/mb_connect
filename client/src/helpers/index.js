@@ -14,3 +14,7 @@ export const restructureServiceName = (name) => {
 
 	return splitArray.join(' ');
 };
+
+export const filterPendingUsers = (pendingUsers, id) => {
+	return pendingUsers.filter((el) => el._id !== id);
+};
