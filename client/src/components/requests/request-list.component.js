@@ -4,13 +4,16 @@ import './request.style.scss';
 import Request from './request.component';
 // Redux
 import { useDispatch } from 'react-redux';
-import { acceptRequest } from '../../redux/actions/user.action';
+import { acceptRequest, declineRequest } from '../../redux/actions/user.action';
 // Code
 const RequestList = ({ request_users, Id }) => {
 	const dispatch = useDispatch();
 
 	const acceptRequestHandler = (usersId) => {
 		dispatch(acceptRequest(Id, usersId));
+	};
+	const declineRequestHandler = (usersId) => {
+		dispatch(declineRequest(Id, usersId));
 	};
 
 	return (
@@ -19,6 +22,7 @@ const RequestList = ({ request_users, Id }) => {
 				<Request
 					key={element._id}
 					acceptRequest={acceptRequestHandler}
+					declineRequest={declineRequestHandler}
 					{...element}
 				/>
 			))}

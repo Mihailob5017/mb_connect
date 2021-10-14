@@ -8,6 +8,7 @@ import {
 	SET_USER_TYPE,
 	CONNECT_TO_EXPERT,
 	ACCEPT_REQUEST,
+	DECLINE_REQUEST,
 } from '../types';
 
 import * as api from '../../api/index.api';
@@ -96,8 +97,22 @@ export const acceptRequest = (_id, usersId) => async (dispatch) => {
 	try {
 		const { data } = await api.acceptRequest(_id, usersId);
 		const { message, updatedUser, removedUserId } = data;
-		alert(message);
 		dispatch({ type: ACCEPT_REQUEST, payload: { updatedUser, removedUserId } });
+		alert(message);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const declineRequest = (_id, usersId) => async (dispatch) => {
+	try {
+		const { data } = await api.declineRequest(_id, usersId);
+		const { message, updatedUser, removedUserId } = data;
+		dispatch({
+			type: DECLINE_REQUEST,
+			payload: { updatedUser, removedUserId },
+		});
+		alert(message);
 	} catch (error) {
 		console.log(error);
 	}

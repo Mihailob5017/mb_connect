@@ -26,4 +26,4 @@ export const acceptRequest = (_id, usersId) =>
 	axios.post(`${API_URL}/request/connect/accept`, { _id, usersId });
 
 export const declineRequest = (_id, usersId) =>
-	axios.post(`${API_URL}/request/connect/accept`, { _id, usersId });
+	axios.post(`${API_URL}/request/connect/decline`, { _id, usersId });

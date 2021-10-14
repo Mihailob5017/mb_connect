@@ -1,7 +1,7 @@
 import {
 	ACCEPT_REQUEST,
 	CONNECT_TO_EXPERT,
-	CONNECT_WITH_EXPERT,
+	DECLINE_REQUEST,
 	LOG_IN_FAILURE,
 	LOG_IN_START,
 	LOG_IN_SUCCESS,
@@ -45,6 +45,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				user: action.payload.user,
 			};
 		case ACCEPT_REQUEST:
+		case DECLINE_REQUEST:
 			return { ...state, user: action.payload.updatedUser };
 
 		default:

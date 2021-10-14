@@ -6,6 +6,7 @@ import {
 	GET_ALL_REQUETS,
 	CONNECT_TO_EXPERT,
 	ACCEPT_REQUEST,
+	DECLINE_REQUEST,
 } from '../types';
 import { filterPendingUsers } from '../../helpers/index';
 const INITIAL_STATE = {
@@ -118,6 +119,7 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 			};
 		}
 		case ACCEPT_REQUEST:
+		case DECLINE_REQUEST:
 			return {
 				...state,
 				pending_users: filterPendingUsers(
@@ -125,6 +127,7 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 					action.payload.removedUserId
 				),
 			};
+
 		default:
 			return state;
 	}

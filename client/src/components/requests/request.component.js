@@ -13,6 +13,7 @@ const Request = ({
 	last_name,
 	profile_pic,
 	acceptRequest,
+	declineRequest,
 }) => {
 	return (
 		<div className='request-single'>
@@ -37,7 +38,10 @@ const Request = ({
 						<img src={Accept} alt='Accept' />
 						<p>Accept</p>
 					</button>
-					<button className='request-btn decline-btn'>
+					<button
+						onClick={() => declineRequest(_id)}
+						className='request-btn decline-btn'
+					>
 						<img src={Decline} alt='Decline' />
 						<p>Decline</p>
 					</button>

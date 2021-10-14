@@ -91,6 +91,7 @@ export const declineRequest = async (req, res) => {
 		res.status(200).send({
 			message: 'You have declined the Request',
 			updatedUser: updatedUser,
+			removedUserId: usersId,
 		});
 	} catch (error) {
 		res.status(500).send(error);
