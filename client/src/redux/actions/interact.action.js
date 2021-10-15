@@ -1,6 +1,6 @@
 import {
 	GET_ALL_EXPERTS,
-	GET_ALL_REQUETS,
+	GET_ALL_REQUESTS,
 	SET_SEARCH_NAME_PARAM,
 	SET_SEARCH_TITLE_PARAM,
 	SET_USER_TYPE,
@@ -28,10 +28,10 @@ export const getAllExperts = () => async (dispatch) => {
 	}
 };
 
-export const getAllRequests = (ids_Arr) => async (dispatch) => {
+export const getAllRequests = (obj) => async (dispatch) => {
 	try {
-		const { data } = await api.getPendingUsers(ids_Arr);
-		dispatch({ type: GET_ALL_REQUETS, payload: [...data.users] });
+		const { data } = await api.getAllUsers(obj);
+		dispatch({ type: GET_ALL_REQUESTS, payload: [...data.users] });
 	} catch (error) {
 		console.error(error);
 	}

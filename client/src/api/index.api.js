@@ -11,16 +11,13 @@ export const LogIn = (body) => axios.post(`${API_URL}/user/sign_in`, body);
 // Get Experts
 export const getExperts = () => axios.get(`${API_URL}/user/experts`);
 
-// Get Pending Users
-export const getPendingUsers = (requestsArr) =>
-	axios.post(`${API_URL}/request`, { pending_requests: requestsArr });
-
 // Get Accepted Users
-export const getAcceptedUsers = (requestsArr) =>
-	axios.post(`${API_URL}/request/accepted`, { accepted_requests: requestsArr });
-// Get Declined Users
-export const getDeclinedUsers = (requestsArr) =>
-	axios.post(`${API_URL}/request/declined`, { declined_requests: requestsArr });
+export const getAllUsers = (requestsArr) =>
+	axios.post(`${API_URL}/request/all`, {
+		accepted_requests: requestsArr.accepted,
+		declined_requests: requestsArr.declined,
+		pending_requests: requestsArr.pending,
+	});
 
 // CONNECETING TO THE USER
 export const connect = (userId, expertId) =>

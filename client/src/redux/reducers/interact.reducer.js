@@ -3,7 +3,7 @@ import {
 	SET_SEARCH_TITLE_PARAM,
 	SET_USER_TYPE,
 	GET_ALL_EXPERTS,
-	GET_ALL_REQUETS,
+	GET_ALL_REQUESTS,
 	CONNECT_TO_EXPERT,
 	ACCEPT_REQUEST,
 	DECLINE_REQUEST,
@@ -112,8 +112,13 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, search_param_title: action.payload };
 		case GET_ALL_EXPERTS:
 			return { ...state, experts: action.payload };
-		case GET_ALL_REQUETS:
-			return { ...state, pending_users: action.payload };
+		case GET_ALL_REQUESTS:
+			return {
+				...state,
+				pending_users: action.payload.pending_users,
+				accepted_users: action.payload.accepted_users,
+				declined_users: action.payload.declined_users,
+			};
 		case CONNECT_TO_EXPERT: {
 			return {
 				...state,

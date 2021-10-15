@@ -1,45 +1,27 @@
 import User from '../models/user_model.js';
 
 export const getAllRequests = async (req, res) => {
-	const { pending_requests } = req.body;
-	const users = [];
-
+	const { pending_requests, accepted_requests, declined_requests } = req.body;
+	const pendingUsers = [];
+	const acceptedUsers = [];
+	const declinedUsers = [];
 	try {
-		for (const element of pending_requests) {
-			let user = await User.findById(element);
+		const allUsers = await User.find();
+		for (let user of allUsers) {
+			if (pending_requests.includes(user._id) === true) pendingUsers.push(user);
+			if (accepted_requests.includes(user._id) === true)
+				acceptedUsers.push(user);
+			if (declined_requests.includes(user._id) === true)
+				declinedUsers.push(user);
+		}
 
-			users.push(user);
-		}
-		res.status(200).json({ users });
-	} catch (error) {
-		res.status(500).send(error);
-		console.log(error.message);
-	}
-};
-
-export const getAcceptedRequests = async (req, res) => {
-	const { accepted_requests } = req.body;
-	const users = [];
-	try {
-		for (const userid of accepted_requests) {
-			let user = await User.findById(userid);
-			users.push(user);
-		}
-		res.status(200).json({ users });
-	} catch (error) {
-		res.status(500).send(error);
-		console.log(error.message);
-	}
-};
-export const getDeclinedRequests = async (req, res) => {
-	const { declined_requests } = req.body;
-	const users = [];
-	try {
-		for (const userid of declined_requests) {
-			let user = await User.findById(userid);
-			users.push(user);
-		}
-		res.status(200).json({ users });
+		res.status(200).json({
+			allUsers: {
+				pendingUsers,
+				acceptedUsers,
+				declinedUsers,
+			},
+		});
 	} catch (error) {
 		res.status(500).send(error);
 		console.log(error.message);
