@@ -18,6 +18,9 @@ export const getPendingUsers = (requestsArr) =>
 // Get Accepted Users
 export const getAcceptedUsers = (requestsArr) =>
 	axios.post(`${API_URL}/request/accepted`, { accepted_requests: requestsArr });
+// Get Declined Users
+export const getDeclinedUsers = (requestsArr) =>
+	axios.post(`${API_URL}/request/declined`, { declined_requests: requestsArr });
 
 // CONNECETING TO THE USER
 export const connect = (userId, expertId) =>

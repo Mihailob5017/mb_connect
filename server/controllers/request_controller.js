@@ -31,6 +31,20 @@ export const getAcceptedRequests = async (req, res) => {
 		console.log(error.message);
 	}
 };
+export const getDeclinedRequests = async (req, res) => {
+	const { declined_requests } = req.body;
+	const users = [];
+	try {
+		for (const userid of declined_requests) {
+			let user = await User.findById(userid);
+			users.push(user);
+		}
+		res.status(200).json({ users });
+	} catch (error) {
+		res.status(500).send(error);
+		console.log(error.message);
+	}
+};
 
 // Connect to the expert
 export const connectToExpert = async (req, res) => {
