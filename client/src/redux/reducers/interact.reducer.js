@@ -98,6 +98,8 @@ const INITIAL_STATE = {
 	search_param_title: '',
 	experts: [],
 	pending_users: [],
+	accepted_users: [],
+	declined_users: [],
 };
 
 const interactReducer = (state = INITIAL_STATE, action) => {
@@ -118,7 +120,16 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 				experts: action.payload.experts,
 			};
 		}
+
 		case ACCEPT_REQUEST:
+			return {
+				...state,
+				pending_users: filterPendingUsers(
+					state.pending_users,
+					action.payload.removedUserId
+				),
+				accepted_users: [...state.accepted_users, action.payload.removedUserId],
+			};
 		case DECLINE_REQUEST:
 			return {
 				...state,
@@ -126,6 +137,7 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 					state.pending_users,
 					action.payload.removedUserId
 				),
+				declined_users: [...state.declined_users, action.payload.removedUserId],
 			};
 
 		default:
