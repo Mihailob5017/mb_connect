@@ -13,7 +13,13 @@ import ExpertHomepage from './home.expert';
 import RegularHomepage from './home.regular';
 
 // Code
-const HomepageContainer = ({ isLogedIn, userType, pending_requests }) => {
+const HomepageContainer = ({
+	isLogedIn,
+	userType,
+	pending_requests,
+	accepted_requests,
+	declined_requests,
+}) => {
 	// Variables
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -22,7 +28,14 @@ const HomepageContainer = ({ isLogedIn, userType, pending_requests }) => {
 	useEffect(() => {
 		if (isLogedIn === false) history.push('/auth');
 		else if (userType === 'regular') dispatch(getAllExperts());
-		else dispatch(getAllRequests(pending_requests));
+		else
+			dispatch(
+				getAllRequests({
+					pending_requests,
+					accepted_requests,
+					declined_requests,
+				})
+			);
 	}, []);
 
 	return (
@@ -36,6 +49,8 @@ const mapStateToProps = (state) => {
 		isLogedIn: state.interact.is_loged_in,
 		userType: state.interact.user_type,
 		pending_requests: state.user.user?.pending_requests || [],
+		accepted_requests: state.user.user?.accepted_requests || [],
+		declined_requests: state.user.user?.declined_requests || [],
 	};
 };
 // Connecting

@@ -14,9 +14,9 @@ export const getExperts = () => axios.get(`${API_URL}/user/experts`);
 // Get Accepted Users
 export const getAllUsers = (requestsArr) =>
 	axios.post(`${API_URL}/request/all`, {
-		accepted_requests: requestsArr.accepted,
-		declined_requests: requestsArr.declined,
-		pending_requests: requestsArr.pending,
+		accepted_requests: requestsArr.accepted_requests,
+		declined_requests: requestsArr.declined_requests,
+		pending_requests: requestsArr.pending_requests,
 	});
 
 // CONNECETING TO THE USER

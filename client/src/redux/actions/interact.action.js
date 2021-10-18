@@ -31,7 +31,8 @@ export const getAllExperts = () => async (dispatch) => {
 export const getAllRequests = (obj) => async (dispatch) => {
 	try {
 		const { data } = await api.getAllUsers(obj);
-		dispatch({ type: GET_ALL_REQUESTS, payload: [...data.users] });
+		console.log(data.allUsers);
+		dispatch({ type: GET_ALL_REQUESTS, payload: data.allUsers });
 	} catch (error) {
 		console.error(error);
 	}

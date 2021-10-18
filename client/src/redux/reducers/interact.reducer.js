@@ -115,9 +115,9 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 		case GET_ALL_REQUESTS:
 			return {
 				...state,
-				pending_users: action.payload.pending_users,
-				accepted_users: action.payload.accepted_users,
-				declined_users: action.payload.declined_users,
+				pending_users: [...action.payload.pendingUsers],
+				accepted_users: [...action.payload.acceptedUsers],
+				declined_users: [...action.payload.declinedUsers],
 			};
 		case CONNECT_TO_EXPERT: {
 			return {

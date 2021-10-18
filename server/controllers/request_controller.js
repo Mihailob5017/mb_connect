@@ -7,11 +7,15 @@ export const getAllRequests = async (req, res) => {
 	const declinedUsers = [];
 	try {
 		const allUsers = await User.find();
+		// Here LIES THE PROBLEM
+		// FILTERING DOESNT WORK FOR SOME REASON
+		// CHECK OUT WHY
 		for (let user of allUsers) {
-			if (pending_requests.includes(user._id) === true) pendingUsers.push(user);
-			if (accepted_requests.includes(user._id) === true)
+			if (pending_requests.includes(user._id.toString()) === true)
+				pendingUsers.push(user);
+			if (accepted_requests.includes(user._id.toString()) === true)
 				acceptedUsers.push(user);
-			if (declined_requests.includes(user._id) === true)
+			if (declined_requests.includes(user._id.toString()) === true)
 				declinedUsers.push(user);
 		}
 
