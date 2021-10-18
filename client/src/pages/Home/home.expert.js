@@ -22,6 +22,7 @@ const HomepageExpert = ({ requests, user }) => {
 	const [available, setAvailable] = useState(
 		user.status === 'available' ? true : false
 	);
+
 	console.log(user);
 	const handleAvailable = async () => {
 		setAvailable(!available);
@@ -47,20 +48,7 @@ const HomepageExpert = ({ requests, user }) => {
 						Current Status:
 						<label> {available === true ? 'Available' : 'Unavailable'}</label>
 					</h1>
-					<div className='info-stats'>
-						<h1>
-							Requests Approved: <label>10</label>
-						</h1>
-						<h1>
-							Requests Denied: <label>4</label>
-						</h1>
-						<h1>
-							Acceptance/Denial Rate: <label>2.5</label>
-						</h1>
-						<h1>
-							Total Money Earned: <label>$250</label>
-						</h1>
-					</div>
+
 					<Button handleClick={handleAvailable} extraStyle='reverse-btn'>
 						Set To {available === true ? 'Unavailable' : 'Available'}
 					</Button>

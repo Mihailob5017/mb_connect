@@ -17,6 +17,8 @@ const Expert = ({
 	price,
 	profile_pic,
 	pending_requests,
+	accepted_requests,
+	declined_requests,
 	handleClick,
 	status,
 }) => {
@@ -40,10 +42,14 @@ const Expert = ({
 				</div>
 				<p>{restructureServiceName(service)}</p>
 				<div className='button-container'>
-					{pending_requests.find((el) => el === userId) === userId ? (
+					{accepted_requests.find((el) => el === userId) === userId ? (
+						<h1>Connected </h1>
+					) : declined_requests.find((el) => el === userId) === userId ? (
+						<h1>Request Declined </h1>
+					) : pending_requests.find((el) => el === userId) === userId ? (
 						<h1>Waiting for response</h1>
 					) : status === 'unavailable' ? (
-						<h1>Unavailable</h1>
+						<h1>Busy</h1>
 					) : (
 						<>
 							<button onClick={handleClick} className='expert-button'>
