@@ -18,6 +18,7 @@ const RequestList = ({ request_users, Id }) => {
 
 	return (
 		<div className='requests-container'>
+			<h1 className='request-header'>Pending Requests</h1>
 			{request_users.map((element) => (
 				<Request
 					key={element._id}

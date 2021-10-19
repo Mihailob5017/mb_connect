@@ -1,44 +1,45 @@
 .main-content-wrapper {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-
-	height: 90vh;
-	.info-container {
-		width: 20%;
+	align-items: flex-start !important;
+	justify-content: space-between !important;
+	height: 85vh !important;
+	padding: 0 50px;
+}
+.expert-status {
+	display: flex;
+	flex-direction: row;
+	margin: 20px 0 !important;
+	padding: 0 50px;
+	h1 {
+		display: inline;
+		font-weight: lighter;
 		border: 0.5px solid #999;
 		border-radius: 3px;
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-		.info-status {
-			margin: 5px 10px;
-			margin-bottom: 35px;
-			font-weight: lighter;
-			font-size: 35px;
-			label {
-				font-weight: normal;
-				color: #164a41;
-			}
+		padding: 7.5px 15px;
+		label {
+			color: #164a41;
+			font-weight: normal;
+			margin-left: 15px;
 		}
-		.info-stats {
-			h1 {
-				margin: 5px 10px;
-				font-size: 30px;
-				font-weight: lighter;
-				label {
-					font-weight: normal;
-					color: #164a41;
-				}
-			}
-		}
-		.reverse-btn {
-			color: white;
-			border: 1px solid #164a41;
-			background: #164a41;
+	}
+	.reverse-btn {
+		margin-left: 20px;
+		color: white;
+		border: 1px solid #164a41;
+		background: #164a41;
+		font-size: 30px;
+		padding: 0.25em 1.5em;
+		border-radius: 5px;
+		cursor: pointer;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		&:hover {
+			transform: scale(1.05);
+			transition: 300ms;
 		}
 	}
 }
-
 .requests-container {
 	width: 30%;
 	overflow-y: scroll;
