@@ -4,13 +4,15 @@
 	height: 90%;
 	border: 0.5px solid #999;
 	border-radius: 3px;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 	.request-header {
 		border-bottom: 1px solid #4a4a4a;
 		text-align: center;
 		font-weight: lighter;
 		padding: 5px;
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+			rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+			rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 	}
 
 	.request-single {

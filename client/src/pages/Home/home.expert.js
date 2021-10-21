@@ -25,8 +25,6 @@ const HomepageExpert = ({
 	const [available, setAvailable] = useState(
 		user.status === 'available' ? true : false
 	);
-
-	console.log(user);
 	const handleAvailable = async () => {
 		setAvailable(!available);
 		const res = await api.setStatus(
@@ -41,11 +39,12 @@ const HomepageExpert = ({
 				<h1 className='navbar-count'>
 					<label>{requested_users.length}</label>New Requests
 				</h1>
+				<Link to='/auth'>Log Out</Link>
 			</Navbar>
 
 			<div className='expert-status'>
 				<h1>
-					Regular Users see you as:
+					Users see you as:
 					<label>{available === true ? 'Available' : 'Busy/Unavailable'}</label>
 				</h1>
 				<button onClick={handleAvailable} className='reverse-btn'>
