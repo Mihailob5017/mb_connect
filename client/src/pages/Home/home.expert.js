@@ -38,11 +38,9 @@ const HomepageExpert = ({
 	return (
 		<>
 			<Navbar>
-				<button className='profile-btn'>
-					<Link to='/'>
-						<label>{requested_users.length}</label>Requests
-					</Link>
-				</button>
+				<h1 className='navbar-count'>
+					<label>{requested_users.length}</label>New Requests
+				</h1>
 			</Navbar>
 
 			<div className='expert-status'>
@@ -54,7 +52,7 @@ const HomepageExpert = ({
 					Set To {available === true ? 'Unavailable' : 'Available'}
 				</button>
 			</div>
-			<div className='main-content-wrapper'>
+			<div className='expert-content-wrapper'>
 				<ResponseList
 					header='Accepted Requests'
 					accepted={true}
