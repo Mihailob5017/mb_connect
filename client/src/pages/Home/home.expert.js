@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import './home-expert.style.scss';
-// Images
-import Profile from '../../images/user.svg';
-import Requests from '../../images/bell.svg';
 
 // React Router Dom
 import { Link } from 'react-router-dom';
@@ -14,11 +11,17 @@ import * as api from '../../api/index.api';
 
 // Components
 import Navbar from '../../components/navbar/navbar.component';
-import Button from '../../components/button/button.component';
+
 import RequestList from '../../components/requests/request-list.component';
+import ResponseList from '../../components/responded-requests/responded-req-list.component';
 
 // Code
-const HomepageExpert = ({ requests, user }) => {
+const HomepageExpert = ({
+	requested_users,
+	accepted_users,
+	declined_users,
+	user,
+}) => {
 	const [available, setAvailable] = useState(
 		user.status === 'available' ? true : false
 	);
@@ -36,30 +39,37 @@ const HomepageExpert = ({ requests, user }) => {
 		<>
 			<Navbar>
 				<button className='profile-btn'>
-					<img src={Requests} alt='Profile Icon' />
 					<Link to='/'>
-						<label>{requests.length}</label>Requests
+						<label>{requested_users.length}</label>Requests
 					</Link>
 				</button>
 			</Navbar>
-			<div className='main-content-wrapper'>
-				<div className='info-container'>
-					<h1 className='info-status'>
-						Current Status:
-						<label> {available === true ? 'Available' : 'Unavailable'}</label>
-					</h1>
 
-					<Button handleClick={handleAvailable} extraStyle='reverse-btn'>
-						Set To {available === true ? 'Unavailable' : 'Available'}
-					</Button>
-				</div>
-				<RequestList Id={user._id} request_users={requests} />
+			<div className='expert-status'>
+				<h1>
+					Regular Users see you as:
+					<label>{available === true ? 'Available' : 'Busy/Unavailable'}</label>
+				</h1>
+				<button onClick={handleAvailable} className='reverse-btn'>
+					Set To {available === true ? 'Unavailable' : 'Available'}
+				</button>
+			</div>
+			<div className='main-content-wrapper'>
+				<ResponseList
+					header='Accepted Requests'
+					accepted={true}
+					user_list={accepted_users}
+				/>
+				<RequestList Id={user._id} request_users={requested_users} />
+				<ResponseList header='Declined Requests' user_list={declined_users} />
 			</div>
 		</>
 	);
 };
 const mapStateToProps = (state) => ({
-	requests: state.interact.pending_users,
+	requested_users: state.interact.pending_users,
+	accepted_users: state.interact.accepted_users,
+	declined_users: state.interact.declined_users,
 	user: state.user.user || {},
 });
 export default connect(mapStateToProps)(HomepageExpert);
