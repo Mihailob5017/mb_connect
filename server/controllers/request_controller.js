@@ -74,10 +74,14 @@ export const acceptRequest = async (req, res) => {
 		}
 
 		await User.findByIdAndUpdate(usersId, { sent_requests });
+		const removedUser = await User.findById(usersId);
 		res.status(200).send({
-			message: 'You have accepted the Request',
+			message: `You have accepted a Request from ${
+				removedUser.first_name + ' ' + removedUser.last_name
+			}.They  will be waiting for you to reach out`,
 			updatedUser: updatedUser,
 			removedUserId: usersId,
+			removedUser,
 		});
 	} catch (error) {
 		res.status(500).send(error);
@@ -101,10 +105,14 @@ export const declineRequest = async (req, res) => {
 			if (request.expert_id === _id) request.status = 'declined';
 		}
 		await User.findByIdAndUpdate(usersId, { sent_requests });
+		const removedUser = await User.findById(usersId);
 		res.status(200).send({
-			message: 'You have declined the Request',
+			message: `You have declined a Request from ${
+				removedUser.first_name + ' ' + removedUser.last_name
+			}.However,they will be able to send  you more requests in the future`,
 			updatedUser: updatedUser,
 			removedUserId: usersId,
+			removedUser,
 		});
 	} catch (error) {
 		res.status(500).send(error);

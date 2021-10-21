@@ -12,7 +12,6 @@ import {
 } from '../types';
 
 import * as api from '../../api/index.api';
-import { replaceExpert } from './interact.action';
 
 // import { setUserType } from './interact.action';
 export const signUp = (user, history) => async (dispatch) => {
@@ -96,8 +95,11 @@ export const connectToExpert = (userId, expertId) => async (dispatch) => {
 export const acceptRequest = (_id, usersId) => async (dispatch) => {
 	try {
 		const { data } = await api.acceptRequest(_id, usersId);
-		const { message, updatedUser, removedUserId } = data;
-		dispatch({ type: ACCEPT_REQUEST, payload: { updatedUser, removedUserId } });
+		const { message, updatedUser, removedUserId, removedUser } = data;
+		dispatch({
+			type: ACCEPT_REQUEST,
+			payload: { updatedUser, removedUserId, removedUser },
+		});
 		alert(message);
 	} catch (error) {
 		console.log(error);
@@ -107,10 +109,10 @@ export const acceptRequest = (_id, usersId) => async (dispatch) => {
 export const declineRequest = (_id, usersId) => async (dispatch) => {
 	try {
 		const { data } = await api.declineRequest(_id, usersId);
-		const { message, updatedUser, removedUserId } = data;
+		const { message, updatedUser, removedUserId, removedUser } = data;
 		dispatch({
 			type: DECLINE_REQUEST,
-			payload: { updatedUser, removedUserId },
+			payload: { updatedUser, removedUserId, removedUser },
 		});
 		alert(message);
 	} catch (error) {

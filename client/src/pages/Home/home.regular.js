@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './home-regular.style.scss';
-// Images
-import Profile from '../../images/user.svg';
 // Redux
 import { connect, useDispatch } from 'react-redux';
 import {

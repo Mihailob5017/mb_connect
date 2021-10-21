@@ -133,7 +133,7 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 					state.pending_users,
 					action.payload.removedUserId
 				),
-				accepted_users: [...state.accepted_users, action.payload.removedUserId],
+				accepted_users: [...state.accepted_users, action.payload.removedUser],
 			};
 		case DECLINE_REQUEST:
 			return {
@@ -142,7 +142,7 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 					state.pending_users,
 					action.payload.removedUserId
 				),
-				declined_users: [...state.declined_users, action.payload.removedUserId],
+				declined_users: [...state.declined_users, action.payload.removedUser],
 			};
 
 		default:

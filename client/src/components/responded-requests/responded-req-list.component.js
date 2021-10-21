@@ -5,8 +5,8 @@ const ResponseList = ({ header, user_list, accepted }) => {
 	return (
 		<div className='response-container'>
 			<h1 className='response-header'>{header}</h1>
-			{user_list.map((element) => (
-				<Response key={element._id} accepted={accepted} {...element} />
+			{user_list.map((element, i) => (
+				<Response key={i} accepted={accepted} {...element} />
 			))}
 		</div>
 	);

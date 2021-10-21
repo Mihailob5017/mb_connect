@@ -2,11 +2,9 @@ import React from 'react';
 import './expert.style.scss';
 // Helper
 import { restructureServiceName } from '../../helpers/index';
-// React Router DOM
-import { Link } from 'react-router-dom';
+
 // Images
 import ConnectSVG from '../../images/link_white.svg';
-import ProfileSVG from '../../images/user_white.svg';
 
 const Expert = ({
 	userId,
