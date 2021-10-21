@@ -31,7 +31,7 @@ const HomepageRegular = ({ options }) => {
 
 	const handleSearch = () => {
 		if (searchInput.length < 3) {
-			alert('Please type more Characters');
+			alert('Please type more than 3 characters to search');
 			setSearchInput('');
 			return;
 		} else {
@@ -43,7 +43,9 @@ const HomepageRegular = ({ options }) => {
 
 	return (
 		<>
-			<Navbar></Navbar>
+			<Navbar>
+				<Link to='/auth'>Log Out</Link>
+			</Navbar>
 
 			<div className='main-content-wrapper'>
 				{/* Filters Component */}
@@ -162,7 +164,6 @@ const HomepageRegular = ({ options }) => {
 								</button>
 							))}
 					</div>
-					{/* End of Filters Component */}
 				</div>
 				<ExpertList />
 			</div>
