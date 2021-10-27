@@ -48,7 +48,7 @@ const RespondedComponent = ({
 					onClick={() => removeConnectionHandler(_id)}
 					className='response-btn'
 				>
-					Cancel Connection
+					{accepted === true ? 'End Request' : 'Remove User'}
 				</button>
 			</div>
 		</div>

@@ -43,13 +43,6 @@ const userSchema = mongoose.Schema({
 	// Expert Requests - A list of users who sent a request to the current expert
 	// In the array are the ID'S of pending users
 	pending_requests: { type: [String], default: [] },
-
-	// Regular Requets - A list of all requests that the user has sent out,
-	// Id = id of expert which has the request been sent to
-	// Status of the requets
-	// 	Waiting
-	// 	Accepted
-	// 	Declined
 });
 
 const UserModel = mongoose.model('user', userSchema);

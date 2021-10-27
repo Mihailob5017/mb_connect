@@ -47,7 +47,7 @@ const SignUpComponent = ({ state, handleChange, handleSubmit }) => {
 					<InputComponent
 						vallue={state.phone_number}
 						handleChange={handleChange}
-						name='phone'
+						name='phone_number'
 						label='Phone Number'
 					/>
 				</div>

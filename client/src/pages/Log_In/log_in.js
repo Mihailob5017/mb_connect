@@ -25,15 +25,12 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 	const handleLogin = () => setLogIn(!isLogIn);
 	// Google Handlers
 	const onGoogleSuccess = (res) => {
-		console.log('Success');
 		const { profileObj } = res;
 		const { email } = profileObj;
 		handleChange('email', email);
 		handleSubmit(true, email);
 	};
-	const onGoogleFailure = (res) => {
-		console.log('Failure');
-	};
+	const onGoogleFailure = (res) => {};
 	//
 	return (
 		<div className='log-in-container'>

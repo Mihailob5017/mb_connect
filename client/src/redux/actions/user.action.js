@@ -15,7 +15,6 @@ import {
 
 import * as api from '../../api/index.api';
 
-// import { setUserType } from './interact.action';
 export const signUp = (user, history) => async (dispatch) => {
 	dispatch({ type: SIGN_UP_START });
 
