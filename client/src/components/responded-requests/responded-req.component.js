@@ -1,8 +1,8 @@
 import React from 'react';
 import './responded-req.style.scss';
-
 // Code
 const RespondedComponent = ({
+	_id,
 	profile_pic,
 	first_name,
 	last_name,
@@ -10,6 +10,7 @@ const RespondedComponent = ({
 	email,
 	address,
 	phone_number,
+	removeConnectionHandler,
 }) => {
 	return (
 		<div className='response-single'>
@@ -43,6 +44,12 @@ const RespondedComponent = ({
 						Email:<label>{email}</label>
 					</p>
 				)}
+				<button
+					onClick={() => removeConnectionHandler(_id)}
+					className='response-btn'
+				>
+					Cancel Connection
+				</button>
 			</div>
 		</div>
 	);

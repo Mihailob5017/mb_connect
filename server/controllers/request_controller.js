@@ -41,10 +41,8 @@ export const connectToExpert = async (req, res) => {
 		await User.findByIdAndUpdate(expertId, {
 			$push: { pending_requests: userId },
 		});
-		// Add requests
-		const updatedUser = await User.findByIdAndUpdate(userId, {
-			$push: { sent_requests: { expert_id: expertId, status: 'waiting' } },
-		});
+
+		const updatedUser = await User.findById(userId);
 		const allExperts = await User.find({ is_regular: false });
 
 		res.status(200).send({
@@ -68,12 +66,6 @@ export const acceptRequest = async (req, res) => {
 		});
 		const updatedUser = await User.findById(_id);
 		// Sets the status of the request to accepted
-		let { sent_requests } = await User.findById(usersId);
-		for (let request of sent_requests) {
-			if (request.expert_id === _id) request.status = 'accepted';
-		}
-
-		await User.findByIdAndUpdate(usersId, { sent_requests });
 		const removedUser = await User.findById(usersId);
 		res.status(200).send({
 			message: `You have accepted a Request from ${
@@ -100,11 +92,6 @@ export const declineRequest = async (req, res) => {
 		});
 		const updatedUser = await User.findById(_id);
 		// Sets the status of the request to accepted
-		let { sent_requests } = await User.findById(usersId);
-		for (let request of sent_requests) {
-			if (request.expert_id === _id) request.status = 'declined';
-		}
-		await User.findByIdAndUpdate(usersId, { sent_requests });
 		const removedUser = await User.findById(usersId);
 		res.status(200).send({
 			message: `You have declined a Request from ${
@@ -117,5 +104,31 @@ export const declineRequest = async (req, res) => {
 	} catch (error) {
 		res.status(500).send(error);
 		console.log(error);
+	}
+};
+
+// Remove Connection
+export const removeConnection = async (req, res) => {
+	const { _id, userId, type } = req.body;
+	try {
+		let user;
+		if (type === 'accepted')
+			user = await User.findByIdAndUpdate(_id, {
+				$pull: { accepted_requests: userId },
+			});
+		else
+			user = await User.findByIdAndUpdate(_id, {
+				$pull: { declined_requests: userId },
+			});
+
+		const { first_name } = await User.findById(userId);
+		res.status(200).send({
+			message: `${first_name} will be able to send you a new Connection Requestst`,
+			type,
+			removedId: userId,
+		});
+	} catch (error) {
+		res.status(400).send('An error Occurred', error);
+		console.error(error);
 	}
 };

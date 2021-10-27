@@ -50,15 +50,6 @@ const userSchema = mongoose.Schema({
 	// 	Waiting
 	// 	Accepted
 	// 	Declined
-	sent_requests: {
-		type: [
-			{
-				expert_id: String,
-				status: String,
-			},
-		],
-		default: [],
-	},
 });
 
 const UserModel = mongoose.model('user', userSchema);

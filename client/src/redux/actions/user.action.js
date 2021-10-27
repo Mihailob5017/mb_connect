@@ -9,6 +9,8 @@ import {
 	CONNECT_TO_EXPERT,
 	ACCEPT_REQUEST,
 	DECLINE_REQUEST,
+	REMOVE_ACCEPTED_REQUEST,
+	REMOVE_DECLINED_REQUEST,
 } from '../types';
 
 import * as api from '../../api/index.api';
@@ -95,12 +97,11 @@ export const connectToExpert = (userId, expertId) => async (dispatch) => {
 export const acceptRequest = (_id, usersId) => async (dispatch) => {
 	try {
 		const { data } = await api.acceptRequest(_id, usersId);
-		const { message, updatedUser, removedUserId, removedUser } = data;
+		const { updatedUser, removedUserId, removedUser } = data;
 		dispatch({
 			type: ACCEPT_REQUEST,
 			payload: { updatedUser, removedUserId, removedUser },
 		});
-		alert(message);
 	} catch (error) {
 		console.log(error);
 	}
@@ -109,12 +110,25 @@ export const acceptRequest = (_id, usersId) => async (dispatch) => {
 export const declineRequest = (_id, usersId) => async (dispatch) => {
 	try {
 		const { data } = await api.declineRequest(_id, usersId);
-		const { message, updatedUser, removedUserId, removedUser } = data;
+		const { updatedUser, removedUserId, removedUser } = data;
 		dispatch({
 			type: DECLINE_REQUEST,
 			payload: { updatedUser, removedUserId, removedUser },
 		});
-		alert(message);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const removeConnection = (_id, userId, type) => async (dispatch) => {
+	try {
+		const { data } = await api.removeRequest(_id, userId, type);
+		if (data.type === 'accepted') {
+			dispatch({ type: REMOVE_ACCEPTED_REQUEST, payload: data.removedId });
+		} else {
+			dispatch({ type: REMOVE_DECLINED_REQUEST, payload: data.removedId });
+		}
+		alert(data.message);
 	} catch (error) {
 		console.log(error);
 	}

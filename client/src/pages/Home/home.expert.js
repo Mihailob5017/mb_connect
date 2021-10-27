@@ -54,11 +54,16 @@ const HomepageExpert = ({
 			<div className='expert-content-wrapper'>
 				<ResponseList
 					header='Accepted Requests'
+					id={user._id}
 					accepted={true}
 					user_list={accepted_users}
 				/>
 				<RequestList Id={user._id} request_users={requested_users} />
-				<ResponseList header='Declined Requests' user_list={declined_users} />
+				<ResponseList
+					header='Declined Requests'
+					id={user._id}
+					user_list={declined_users}
+				/>
 			</div>
 		</>
 	);

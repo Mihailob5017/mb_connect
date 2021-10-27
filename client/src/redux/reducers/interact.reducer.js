@@ -7,6 +7,8 @@ import {
 	CONNECT_TO_EXPERT,
 	ACCEPT_REQUEST,
 	DECLINE_REQUEST,
+	REMOVE_ACCEPTED_REQUEST,
+	REMOVE_DECLINED_REQUEST,
 } from '../types';
 import { filterPendingUsers } from '../../helpers/index';
 const INITIAL_STATE = {
@@ -143,6 +145,21 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 					action.payload.removedUserId
 				),
 				declined_users: [...state.declined_users, action.payload.removedUser],
+			};
+		case REMOVE_ACCEPTED_REQUEST:
+			return {
+				...state,
+				accepted_users: state.accepted_users.filter(
+					(el) => el._id !== action.payload
+				),
+			};
+
+		case REMOVE_DECLINED_REQUEST:
+			return {
+				...state,
+				declined_users: state.declined_users.filter((el) => {
+					return el._id !== action.payload;
+				}),
 			};
 
 		default:
