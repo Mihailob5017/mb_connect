@@ -30,8 +30,11 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 		handleChange('email', email);
 		handleSubmit(true, email);
 	};
-	const onGoogleFailure = (res) => {};
-	//
+	const onGoogleFailure = (res) => {
+		console.log(res);
+		alert('Something went Wrong while Logging In');
+	};
+
 	return (
 		<div className='log-in-container'>
 			<GreenScreen />

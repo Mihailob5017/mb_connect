@@ -36,9 +36,12 @@ const HomepageExpert = ({
 	return (
 		<>
 			<Navbar>
-				<h1 className='navbar-count'>
-					<label>{requested_users.length}</label>New Requests
-				</h1>
+				{requested_users.length > 0 && (
+					<h1 className='navbar-count'>
+						<label>{requested_users.length}</label>New Requests
+					</h1>
+				)}
+
 				<Link to='/auth'>Log Out</Link>
 			</Navbar>
 

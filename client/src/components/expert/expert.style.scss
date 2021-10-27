@@ -43,21 +43,20 @@
 			flex: 1;
 			height: 150px;
 			padding: 5px 10px;
+			padding-right: 0;
 			.main-info {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 				h1:last-of-type {
 					color: #164a41;
+					margin-right: 10px;
 				}
 			}
 			p {
 				font-size: 24px;
 			}
 			.button-container {
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-end;
 				button:first-child {
 					&:hover {
 						transform: scale(1.05);
@@ -65,16 +64,50 @@
 					}
 				}
 				h1 {
-					font-size: 24px;
-					border: 1px solid #4a4a4a;
-					padding: 2px 15px;
 					border-radius: 3px;
-					color: #164a41;
+				}
+				.declined-req {
+					border: 2px solid #b61729;
+					background: #f0b4bb;
+
+					p {
+						font-size: 24px;
+						color: #b61729;
+						&:last-of-type {
+							font-weight: normal;
+						}
+					}
+				}
+				.accepted-req {
+					border: 2px solid #3166da;
+					background: #b7caf1;
+
+					p {
+						font-size: 24px;
+						color: #3166da;
+						&:last-of-type {
+							font-weight: normal;
+						}
+					}
+				}
+				.waiting-req {
+					border: 2px solid #b7b938;
+					background: #dce77b;
+					flex: 1;
+					p {
+						font-size: 24px;
+						color: #6d6e28;
+						&:last-of-type {
+							display: block;
+							font-weight: normal;
+						}
+					}
 				}
 
 				button {
 					cursor: pointer;
 					margin: 0 10px;
+					margin-left: auto;
 					background: #164a41;
 					display: flex;
 					flex-direction: row;

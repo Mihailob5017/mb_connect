@@ -41,13 +41,25 @@ const Expert = ({
 				<p>{restructureServiceName(service)}</p>
 				<div className='button-container'>
 					{accepted_requests.find((el) => el === userId) === userId ? (
-						<h1>Connected.The expert will be reaching out to you </h1>
+						<h1 className='accepted-req'>
+							<p>Request Approved</p>
+							<p>The expert will contact you soon</p>
+						</h1>
 					) : declined_requests.find((el) => el === userId) === userId ? (
-						<h1>Request Declined.Try again Later </h1>
+						<h1 className='declined-req'>
+							<p>Request Declined</p>
+							<p>Feel free to try again Later</p>
+						</h1>
 					) : pending_requests.find((el) => el === userId) === userId ? (
-						<h1>Waiting for their Response</h1>
+						<h1 className='waiting-req'>
+							<p>Request Pending</p>
+							<p>You will be Notified once your Request is Accepted/Denied</p>
+						</h1>
 					) : status === 'unavailable' ? (
-						<h1>Busy</h1>
+						<h1 className='waiting-req'>
+							<p>User is Busy/Unavailable</p>
+							<p>You will be Notified once the Expert is Available again</p>
+						</h1>
 					) : (
 						<>
 							<button onClick={handleClick} className='expert-button'>
