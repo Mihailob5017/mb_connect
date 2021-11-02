@@ -6,8 +6,9 @@ import { removeConnection } from '../../redux/actions/user.action';
 // Componentts
 import NoResults from '../no-results/no-results.component';
 import Response from './responded-req.component';
+import Loading from '../loading/loading.component';
 // Code
-const ResponseList = ({ header, user_list, accepted, id }) => {
+const ResponseList = ({ header, user_list, accepted, id, loading }) => {
 	const dispatch = useDispatch();
 	const primaryMsg =
 		accepted === true ? `No new connections` : `No new declined requests`;
@@ -24,7 +25,10 @@ const ResponseList = ({ header, user_list, accepted, id }) => {
 	return (
 		<div className='response-container'>
 			<h1 className='response-header'>{header}</h1>
-			{user_list.length === 0 ? (
+
+			{loading === true ? (
+				<Loading />
+			) : user_list.length === 0 ? (
 				<NoResults
 					includesImg={false}
 					primaryMsg={primaryMsg}

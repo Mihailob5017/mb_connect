@@ -99,9 +99,13 @@ const INITIAL_STATE = {
 	search_param_name: '',
 	search_param_title: '',
 	experts: [],
+	experts_loading: true,
 	pending_users: [],
+	pending_users_loading: true,
 	accepted_users: [],
+	accepted_users_loading: true,
 	declined_users: [],
+	declined_users_loading: true,
 };
 
 const interactReducer = (state = INITIAL_STATE, action) => {
@@ -113,13 +117,16 @@ const interactReducer = (state = INITIAL_STATE, action) => {
 		case SET_SEARCH_TITLE_PARAM:
 			return { ...state, search_param_title: action.payload };
 		case GET_ALL_EXPERTS:
-			return { ...state, experts: action.payload };
+			return { ...state, experts: action.payload, experts_loading: false };
 		case GET_ALL_REQUESTS:
 			return {
 				...state,
 				pending_users: [...action.payload.pendingUsers],
+				pending_users_loading: false,
 				accepted_users: [...action.payload.acceptedUsers],
+				accepted_users_loading: false,
 				declined_users: [...action.payload.declinedUsers],
+				declined_users_loading: false,
 			};
 		case CONNECT_TO_EXPERT: {
 			return {

@@ -18,8 +18,11 @@ import ResponseList from '../../components/responded-requests/responded-req-list
 // Code
 const HomepageExpert = ({
 	requested_users,
+	requested_users_loading,
 	accepted_users,
+	accepted_users_loading,
 	declined_users,
+	declined_users_loading,
 	user,
 }) => {
 	const [available, setAvailable] = useState(
@@ -56,13 +59,19 @@ const HomepageExpert = ({
 			</div>
 			<div className='expert-content-wrapper'>
 				<ResponseList
+					loading={accepted_users_loading}
 					header='Accepted Requests'
 					id={user._id}
 					accepted={true}
 					user_list={accepted_users}
 				/>
-				<RequestList Id={user._id} request_users={requested_users} />
+				<RequestList
+					Id={user._id}
+					loading={requested_users_loading}
+					request_users={requested_users}
+				/>
 				<ResponseList
+					loading={declined_users_loading}
 					header='Declined Requests'
 					id={user._id}
 					user_list={declined_users}
@@ -73,8 +82,11 @@ const HomepageExpert = ({
 };
 const mapStateToProps = (state) => ({
 	requested_users: state.interact.pending_users,
+	requested_users_loading: state.interact.pending_users_loading,
 	accepted_users: state.interact.accepted_users,
+	accepted_users_loading: state.interact.accepted_users_loading,
 	declined_users: state.interact.declined_users,
+	declined_users_loading: state.interact.declined_users_loading,
 	user: state.user.user || {},
 });
 export default connect(mapStateToProps)(HomepageExpert);

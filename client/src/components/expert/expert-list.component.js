@@ -6,6 +6,7 @@ import { connect, useDispatch } from 'react-redux';
 import { connectToExpert } from '../../redux/actions/user.action';
 // Components
 import Expert from './expert-single.component';
+import Loading from '../loading/loading.component';
 // Helper Functions
 import { searchByInput } from '../../helpers/index';
 import NoResults from '../no-results/no-results.component';
@@ -15,6 +16,7 @@ const ExpertList = ({
 	searchParamName,
 	searchParamTitle,
 	userId,
+	loading,
 }) => {
 	const primaryMsg = 'Sorry! No experts found';
 	const secondaryMsg = `We're sorry that you can't find the people you are looking for.Feel free to browse through other categories`;
@@ -30,7 +32,9 @@ const ExpertList = ({
 
 	return (
 		<div className='expert-list-wrapper'>
-			{filteredExperts(experts).length === 0 ? (
+			{loading === true ? (
+				<Loading />
+			) : filteredExperts(experts).length === 0 ? (
 				<NoResults primaryMsg={primaryMsg} secondaryMsg={secondaryMsg} />
 			) : (
 				filteredExperts(experts).map((expert) => (
@@ -49,6 +53,7 @@ const ExpertList = ({
 const mapStateToProps = (state) => ({
 	userId: state.user.user._id,
 	experts: state.interact.experts,
+	loading: state.interact.experts_loading,
 	searchParamName: state.interact.search_param_name,
 	searchParamTitle: state.interact.search_param_title,
 });
