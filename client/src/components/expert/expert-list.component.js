@@ -1,5 +1,6 @@
 import React from 'react';
 import './expert.style.scss';
+
 // Redux
 import { connect, useDispatch } from 'react-redux';
 import { connectToExpert } from '../../redux/actions/user.action';
@@ -7,6 +8,7 @@ import { connectToExpert } from '../../redux/actions/user.action';
 import Expert from './expert-single.component';
 // Helper Functions
 import { searchByInput } from '../../helpers/index';
+import NoResults from '../no-results/no-results.component';
 // Code
 const ExpertList = ({
 	experts = [],
@@ -14,6 +16,8 @@ const ExpertList = ({
 	searchParamTitle,
 	userId,
 }) => {
+	const primaryMsg = 'Sorry! No experts found';
+	const secondaryMsg = `We're sorry that you can't find the people you are looking for.Feel free to browse through other categories`;
 	const dispatch = useDispatch();
 	// Filters Experts by specific param
 	const filteredExperts = (experts) => {
@@ -26,14 +30,18 @@ const ExpertList = ({
 
 	return (
 		<div className='expert-list-wrapper'>
-			{filteredExperts(experts).map((expert) => (
-				<Expert
-					userId={userId}
-					handleClick={() => dispatch(connectToExpert(userId, expert._id))}
-					key={expert._id}
-					{...expert}
-				/>
-			))}
+			{filteredExperts(experts).length === 0 ? (
+				<NoResults primaryMsg={primaryMsg} secondaryMsg={secondaryMsg} />
+			) : (
+				filteredExperts(experts).map((expert) => (
+					<Expert
+						userId={userId}
+						handleClick={() => dispatch(connectToExpert(userId, expert._id))}
+						key={expert._id}
+						{...expert}
+					/>
+				))
+			)}
 		</div>
 	);
 };
