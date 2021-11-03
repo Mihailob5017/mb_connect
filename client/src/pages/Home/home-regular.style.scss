@@ -22,40 +22,81 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	width: 80%;
+	margin: auto;
 	height: 90vh;
 	.filter-wrapper {
-		height: 60%;
-		width: 40%;
 		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
-		justify-content: space-between;
-		.filter-container {
-			width: 49%;
-		}
-		.filter-btn {
-			display: block;
+		flex-direction: column;
+		height: 95%;
+		border: 1px solid black;
+		width: 40%;
+		.search-wrapper {
+			padding: 15px 0;
+			background: #ddd;
+			border-bottom: 1px solid #4a4a4a;
 			box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-			border-radius: 5px;
-			cursor: pointer;
-			border: 1px solid #999;
-			font-weight: bold;
-			width: 80%;
-			font-size: 24px;
-			height: 50px;
-			margin: 15px auto;
+			label {
+				display: block;
+				margin: 15px auto;
+				width: 90%;
+				font-size: 30px;
+				font-weight: bold;
+				color: #164a41;
+			}
+			.input-wrapper {
+				width: 90%;
+			}
+			.url-row {
+				width: 90%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				margin: 25px auto;
+				margin-bottom: 10px;
+				* {
+					font-size: 20px;
+					color: #4a4a4a;
+					letter-spacing: 0.4px;
+				}
+			}
 		}
-		.selected-btn {
-			color: white;
-			border: 1px solid #164a41;
-			background: #164a41;
-		}
-		label {
-			width: 80%;
-			display: block;
-			margin: auto;
-			font-size: 30px;
+		.filter-content {
+			overflow-y: scroll;
+			flex: 1;
+
+			.category-wrapper {
+				width: 100%;
+				margin-top: 15px;
+			}
+
+			.filter-btn {
+				display: block;
+				box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+				border-radius: 3px;
+				cursor: pointer;
+				border: 1px solid #bbb;
+				font-weight: normal;
+				height: 40px;
+				width: 98%;
+				font-size: 22px;
+				margin: 5px auto;
+				text-align: left;
+				padding-left: 20px;
+			}
+			.selected-btn {
+				color: white;
+				border: 1px solid #164a41;
+				background: #164a41;
+			}
+			label {
+				padding-left: 20px;
+				width: 98%;
+				display: block;
+				margin: auto;
+				font-size: 28px;
+			}
 		}
 	}
 }

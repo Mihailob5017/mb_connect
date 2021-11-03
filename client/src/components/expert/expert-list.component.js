@@ -17,9 +17,10 @@ const ExpertList = ({
 	searchParamTitle,
 	userId,
 	loading,
+	expert_group,
 }) => {
 	const primaryMsg = 'Sorry! No experts found';
-	const secondaryMsg = `We're sorry that you can't find the people you are looking for.Feel free to browse through other categories`;
+	const secondaryMsg = `We're sorry that you can't find the people you are looking for. Feel free to browse through other categories`;
 	const dispatch = useDispatch();
 	// Filters Experts by specific param
 	const filteredExperts = (experts) => {
@@ -29,9 +30,14 @@ const ExpertList = ({
 			return experts.filter((expert) => expert.service === searchParamTitle);
 		else return experts;
 	};
-
+	console.log(expert_group);
+	const expertMsg =
+		expert_group.length === 0 || expert_group.key === 'all-types'
+			? `Our experts from each category`
+			: `Experts from "${expert_group[0].text}" category`;
 	return (
 		<div className='expert-list-wrapper'>
+			<h1 className='expert-list-header'>{expertMsg}</h1>
 			{loading === true ? (
 				<Loading />
 			) : filteredExperts(experts).length === 0 ? (

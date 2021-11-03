@@ -38,7 +38,6 @@ const HomepageRegular = ({ options }) => {
 			dispatch(setSearchParamName(searchInput));
 		}
 	};
-
 	return (
 		<>
 			<Navbar>
@@ -46,124 +45,149 @@ const HomepageRegular = ({ options }) => {
 			</Navbar>
 
 			<div className='main-content-wrapper'>
-				{/* Filters Component */}
 				<div className='filter-wrapper'>
-					<div className='filter-container'>
+					<div className='search-wrapper'>
+						<label>FILTER EXPERTS</label>
 						<Input
 							value={searchInput}
 							handleChange={(name, value) => setSearchInput(value)}
 							type='text'
-							customClass='margin-2'
+							customClass='margin-0'
 							name='search'
-							label='Search'
 							isSearch={true}
+							placeholder={`Type in expert's first name or last name`}
 							searchHandler={handleSearch}
 						/>
-						<label>Development</label>
-						{options
-							.filter((option) => option.group === 'development')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
-						<label>Design</label>
-						{options
-							.filter((option) => option.group === 'design')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
-						<label>Education</label>
-						{options
-							.filter((option) => option.group === 'education')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
+
+						<div className='url-row'>
+							<h3>
+								Select through a vast roster of categories by clicking on a
+								category you are most interested in.
+							</h3>
+						</div>
 					</div>
-					<div className='filter-container'>
-						{' '}
-						<button
-							value='all-types'
-							onClick={(e) => handleBtnChange(e)}
-							className={`filter-btn firt-btn ${
-								selectedBtn === 'all-types' && 'selected-btn'
-							}`}
-						>
-							All Types
-						</button>
-						<label>Support</label>
-						{options
-							.filter((option) => option.group === 'support')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
-						<label>Art</label>
-						{options
-							.filter((option) => option.group === 'art')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
-						<label>Sales</label>
-						{options
-							.filter((option) => option.group === 'sales')
-							.map((option, i) => (
-								<button
-									key={i}
-									value={option.value}
-									onClick={(e) => handleBtnChange(e)}
-									className={`filter-btn ${
-										selectedBtn === option.value && 'selected-btn'
-									}`}
-								>
-									{option.text}
-								</button>
-							))}
+					<div className='filter-content'>
+						<div className='category-wrapper'>
+							<button
+								value='all-types'
+								onClick={(e) => handleBtnChange(e)}
+								className={`filter-btn firt-btn ${
+									selectedBtn === 'all-types' && 'selected-btn'
+								}`}
+							>
+								All Experts
+							</button>
+						</div>
+						<div className='category-wrapper'>
+							<label>Development</label>
+							{options
+								.filter((option) => option.group === 'development')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
+						<div className='category-wrapper'>
+							<label>Design</label>
+							{options
+								.filter((option) => option.group === 'design')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
+						<div className='category-wrapper'>
+							<label>{`Writing & Translation`}</label>
+							{options
+								.filter((option) => option.group === 'writing')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
+						<div className='category-wrapper'>
+							{' '}
+							<label>{`Admin & Customer Support`}</label>
+							{options
+								.filter((option) => option.group === 'support')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
+						<div className='category-wrapper'>
+							<label>{`Finance & Accounting`}</label>
+							{options
+								.filter((option) => option.group === 'accounting')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
+						<div className='category-wrapper'>
+							<label>{`Sales & Marketing`}</label>
+							{options
+								.filter((option) => option.group === 'sales')
+								.map((option, i) => (
+									<button
+										key={i}
+										value={option.value}
+										onClick={(e) => handleBtnChange(e)}
+										className={`filter-btn ${
+											selectedBtn === option.value && 'selected-btn'
+										}`}
+									>
+										{option.text}
+									</button>
+								))}
+						</div>
 					</div>
 				</div>
-				<ExpertList />
+				<ExpertList
+					expert_group={options.filter(
+						(option) => option.value === selectedBtn
+					)}
+				/>
 			</div>
 		</>
 	);

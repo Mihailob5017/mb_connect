@@ -12,6 +12,7 @@ const InputComponent = ({
 	name,
 	customClass,
 	searchHandler,
+	placeholder,
 }) => {
 	const [isShownType, setShownType] = useState(true);
 
@@ -24,6 +25,7 @@ const InputComponent = ({
 				name={name}
 				type={isShownType === true ? type : 'text'}
 				value={value}
+				placeholder={placeholder}
 				onChange={(val) => handleChange(name, val.target.value)}
 			/>
 			{isPassword === true ? (
