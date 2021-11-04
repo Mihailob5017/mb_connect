@@ -10,6 +10,8 @@ const Expert = ({
 	userId,
 	_id,
 	first_name,
+	email,
+	about_me,
 	last_name,
 	service,
 	price,
@@ -32,42 +34,50 @@ const Expert = ({
 			) : (
 				<img src={profile_pic} alt={first_name + ' ' + last_name} />
 			)}
-
 			<div className='expert-content'>
-				<div className='main-info'>
-					<h1>{first_name + ' ' + last_name}</h1>
-					<h1>${price}</h1>
-				</div>
-				<p>{restructureServiceName(service)}</p>
-				<div className='button-container'>
+				<div className='name-container'>
+					<h1 className='name-h1'>{first_name + ' ' + last_name}</h1>
+
 					{accepted_requests.find((el) => el === userId) === userId ? (
-						<h1 className='accepted-req'>
-							<p>Request Approved</p>
-							<p>The expert will contact you soon</p>
-						</h1>
+						<div className='status-container accepted-status '>
+							<div className='status-circle'></div>
+							<p>Request Accepted</p>
+						</div>
 					) : declined_requests.find((el) => el === userId) === userId ? (
-						<h1 className='declined-req'>
+						<div className='status-container declined-status '>
+							<div className='status-circle'></div>
 							<p>Request Declined</p>
-							<p>Feel free to try again Later</p>
-						</h1>
+						</div>
 					) : pending_requests.find((el) => el === userId) === userId ? (
-						<h1 className='waiting-req'>
+						<div className='status-container busy-status'>
+							<div className='status-circle'></div>
 							<p>Request Pending</p>
-							<p>You will be Notified once your Request is Accepted/Denied</p>
-						</h1>
+						</div>
 					) : status === 'unavailable' ? (
-						<h1 className='waiting-req'>
-							<p>User is Busy/Unavailable</p>
-							<p>You will be Notified once the Expert is Available again</p>
-						</h1>
+						<div className='status-container busy-status'>
+							<div className='status-circle'></div>
+							<p>User Busy</p>
+						</div>
 					) : (
 						<>
-							<button onClick={handleClick} className='expert-button'>
+							<button onClick={handleClick} className='connect-button'>
 								<img src={ConnectSVG} alt='Connect' />
 								<p>Connect</p>
 							</button>
 						</>
 					)}
+				</div>
+				<div className='primary-info'>
+					<h2>
+						{restructureServiceName(service) + ' '} |
+						<label className='green'> ${price}/hr</label>
+					</h2>
+				</div>
+				<div className='primary-info'>
+					<h2>@{email}</h2>
+				</div>
+				<div className='secondary-info'>
+					<p>{about_me}</p>
 				</div>
 			</div>
 		</div>

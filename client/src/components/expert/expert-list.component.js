@@ -35,9 +35,11 @@ const ExpertList = ({
 		expert_group.length === 0 || expert_group.key === 'all-types'
 			? `Our experts from each category`
 			: `Experts from "${expert_group[0].text}" category`;
+
 	return (
 		<div className='expert-list-wrapper'>
 			<h1 className='expert-list-header'>{expertMsg}</h1>
+
 			{loading === true ? (
 				<Loading />
 			) : filteredExperts(experts).length === 0 ? (

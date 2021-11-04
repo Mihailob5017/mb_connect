@@ -55,14 +55,14 @@ const HomepageRegular = ({ options }) => {
 							customClass='margin-0'
 							name='search'
 							isSearch={true}
-							placeholder={`Type in expert's first name or last name`}
+							placeholder={`Search by typing in the expert's name `}
 							searchHandler={handleSearch}
 						/>
 
 						<div className='url-row'>
 							<h3>
 								Select through a vast roster of categories by clicking on a
-								category you are most interested in.
+								category you are mostly interested in.
 							</h3>
 						</div>
 					</div>
