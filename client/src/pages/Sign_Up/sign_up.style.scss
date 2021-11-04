@@ -1,43 +1,60 @@
-.sign-up-container {
+.sign-up-wrapper {
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 }
-.sign-up-card {
-	width: 78%;
-	height: 98vh;
-	margin: 1em 2em;
-	display: flex;
-	flex-direction: row;
-}
-.sign-up-column {
-	width: 40%;
-	height: 80%;
-}
-.sign-up-head {
-	width: 100%;
-	text-align: center;
-	font-size: 40px;
-	color: #164a41;
-	margin-top: 2em;
-}
-.empty-space {
-	height: 12em;
+.sign-up-container {
+	width: 900px;
+	height: 90%;
+	border: 1px solid #9a9a9a;
+	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	background: #fafafa;
+	.border-div {
+		border-top: 1px solid #4a4a4a;
+	}
+	.ca-head {
+		margin: 10px auto;
+		text-align: center;
+		font-weight: normal;
+		font-size: 26px;
+	}
+
+	.ca-text {
+		font-size: 20px;
+		color: #4a4a4a;
+		margin: 10px auto;
+		text-align: center;
+		width: 80%;
+	}
+	.row-div {
+		width: 80%;
+		margin: 5px auto;
+		justify-content: space-between;
+		display: flex;
+		align-items: flex-end;
+		flex-direction: row;
+	}
 }
 .upload-wrapper {
 	position: relative;
 	cursor: pointer;
-	margin: 4em auto;
+
 	width: 80%;
+	margin: 15px auto;
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 60px;
+	height: 40px;
 	background: #164a41;
+	&:hover {
+		cursor: pointer;
+	}
 	input {
 		background: transparent;
 		opacity: 0;
@@ -47,12 +64,12 @@
 		height: 100%;
 	}
 	img {
-		width: 25px;
-		height: 25px;
+		width: 16px;
+		height: 16px;
 	}
 	p {
 		width: fit-content;
-		font-size: 24px;
+		font-size: 16px;
 		color: white;
 		margin-left: 5px;
 	}
@@ -64,10 +81,10 @@
 	font-size: 24px;
 }
 .about-me-wrapper {
-	margin: 3em auto;
+	margin: 10px auto;
 	width: 80%;
 	label {
-		font-size: 26px;
+		font-size: 18px;
 		letter-spacing: 1px;
 		color: #4a4a4a;
 		margin: 5px;
@@ -78,7 +95,14 @@
 		outline: none;
 		margin: 5px;
 		width: 100%;
-		height: 200px;
-		font-size: 26px;
+		height: 75px;
+		font-size: 16px;
 	}
+}
+.bottom-element {
+	margin-top: 35px;
+}
+
+.align {
+	align-items: center !important;
 }

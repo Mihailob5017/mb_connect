@@ -47,3 +47,40 @@
 .margin-4 {
 	margin: 7.5px auto;
 }
+.input-small {
+	margin: 5px 10px;
+	width: 80%;
+	label {
+		font-size: 18px;
+		letter-spacing: 1px;
+		color: #4a4a4a;
+	}
+	input {
+		font-size: 18px;
+		border: 0.5px solid #4a4a4a;
+		border-radius: 3px;
+		padding: 5px;
+		outline: none;
+	}
+	button {
+		display: flex;
+		flex-direction: row;
+		width: fit-content;
+		padding: 0 3px;
+		font-size: 16px;
+		position: absolute;
+		bottom: 2px;
+		right: 0px;
+		img {
+			width: 16px;
+			height: 16px;
+		}
+	}
+}
+.input-small:first-of-type {
+	margin-left: 0;
+}
+.email-input {
+	width: 80%;
+	margin: 5px auto;
+}
