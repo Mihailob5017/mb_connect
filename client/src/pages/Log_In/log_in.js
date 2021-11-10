@@ -37,10 +37,7 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 
 	return (
 		<div className='log-in-container'>
-			<GreenScreen />
-			{/* Will be replaced by individual components*/}
 			<div className='log-in-card-container'>
-				{/* Header Component */}
 				<CardComponent customClass='log-in-card'>
 					<CardHeaderComponent />
 					{isLogIn ? (
@@ -73,24 +70,26 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 							<div className='or-wrapper'>
 								<p>or</p>
 							</div>
+							<div className='input-container'>
+								<InputComponent
+									type='email'
+									name='email'
+									value={state.email}
+									handleChange={handleChange}
+									customClass='input-small wide-input'
+									label='Email Address'
+								/>
 
-							<InputComponent
-								type='email'
-								name='email'
-								value={state.email}
-								handleChange={handleChange}
-								label='Email Address'
-							/>
-
-							<InputComponent
-								isPassword={true}
-								type='password'
-								name='password'
-								value={state.password}
-								handleChange={handleChange}
-								label='Password'
-							/>
-
+								<InputComponent
+									isPassword={true}
+									type='password'
+									name='password'
+									value={state.password}
+									handleChange={handleChange}
+									customClass='input-small  wide-input'
+									label='Password'
+								/>
+							</div>
 							{/* Sign In Button */}
 							<Button handleClick={handleSubmit} type='primary'>
 								Sign In
@@ -100,8 +99,10 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 						<>
 							<h1 className='log-in-head'>Create your Account</h1>
 							<p className='log-in-text'>
-								Please choose what type of user are you.Warning this cannot be
-								changed later.
+								First thing's first, you have to specify will you be a{' '}
+								<label>Regular</label> or a <label>Premium</label> user. Note
+								that this can not be changed later, you will have to make a new
+								account if you want to do so.
 							</p>
 							<div className='button-switch-container'>
 								<button
@@ -120,12 +121,17 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 								</button>
 							</div>
 							<p className='log-in-text'>
-								Regular users are the one who are in need for a expert in a
-								certan domain.
+								<label>Regular user</label> - You are in need of a expert for
+								hire to help you with a service of a specific kind. Wheater it's
+								a Graphic Designer, an IT consultant or a Sales Representetive
+								for your company.
 							</p>
 							<p className='log-in-text'>
-								Expert users are the providers for a certan type of service and
-								they are being contacted by regular users.
+								<label>Expert user</label> - You have this amazing knowlage in a
+								specific area and you are looking to make some money with it.
+								Here you will be able to create an account and display yoursel
+								in front of countless of users that can and will reach out to
+								you.
 							</p>
 							{/* Proceed Step */}
 							<Link to={`/auth/signup/${isRegularUser ? 'regular' : 'expert'}`}>

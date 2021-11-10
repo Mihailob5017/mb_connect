@@ -4,24 +4,21 @@
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-}
-.log-in-card-container {
-	width: 33%;
-	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 }
 .log-in-card {
-	width: 600px;
+	width: 500px;
 }
 // Header
 .log-in-head {
 	width: 100%;
 	text-align: center;
-	font-size: 40px;
+	font-size: 28px;
+	font-weight: normal;
 	color: #164a41;
-	margin-top: 2em;
+	margin: 30px 0;
+	// margin-top: px;
 }
 
 // Google Button Component
@@ -30,13 +27,13 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 2em auto;
+	margin: 10px auto 5px auto;
 	background: #3578e7;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 5px;
 	border: none;
 	width: 80%;
-	height: 60px;
+	height: 40px;
 	.google-button {
 		background: #fafafa;
 		margin-left: 5px;
@@ -44,8 +41,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 50px;
-		height: 50px;
+		width: 30px;
+		height: 30px;
 		img {
 			width: 70%;
 			height: 70%;
@@ -55,7 +52,7 @@
 	p {
 		width: 86%;
 		text-align: center;
-		font-size: 36px;
+		font-size: 25px;
 		font-weight: lighter;
 		color: white;
 	}
@@ -68,20 +65,24 @@
 	justify-content: center;
 	p {
 		background: #fafafa;
-		font-size: 25px;
+		font-size: 18px;
 		padding: 0 0.5em;
 		transform: translateY(40%);
 	}
 }
+.input-container {
+	width: 80%;
+	margin: auto;
+}
 // Sign Up Stage 1 Components
 .button-switch-container {
-	margin: 1em auto;
+	margin: 15px auto;
 	width: 80%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	.button-switch {
-		font-size: 25px;
+		font-size: 18px;
 		margin: 0 5px;
 		border-radius: 5px;
 		border: 2px solid #164a41;
@@ -101,17 +102,22 @@
 .log-in-text {
 	display: block;
 	width: 80%;
-	margin: 1em auto;
-	font-weight: lighter;
-	font-size: 26px;
+	margin: 25px auto;
+	color: #4a4a4a;
+	font-size: 18px;
+	label {
+		font-weight: bold;
+		color: #164a41;
+	}
 }
 
 .switch-message {
+	text-align: center;
 	display: block;
 	width: 80%;
-	font-size: 26px;
+	font-size: 18px;
 	letter-spacing: 2px;
-	font-weight: lighter;
+
 	margin: auto auto 1.5em auto;
 	label {
 		font-weight: normal;
