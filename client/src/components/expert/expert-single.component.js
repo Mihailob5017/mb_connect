@@ -77,7 +77,11 @@ const Expert = ({
 					<h2>@{email}</h2>
 				</div>
 				<div className='secondary-info'>
-					<p>{about_me}</p>
+					<p>
+						{about_me.length > 120
+							? about_me.substring(0, 120) + '...'
+							: about_me}
+					</p>
 				</div>
 			</div>
 		</div>

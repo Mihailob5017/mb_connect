@@ -48,11 +48,17 @@ const HomepageRegular = ({ options }) => {
 				<div className='filter-wrapper'>
 					<div className='search-wrapper'>
 						<label>FILTER EXPERTS</label>
+						<div className='url-row'>
+							<h3>
+								If you are looking for a specific person, type in their name and
+								click on the search icon to find out if they are on MBConnect
+							</h3>
+						</div>
 						<Input
 							value={searchInput}
 							handleChange={(name, value) => setSearchInput(value)}
 							type='text'
-							customClass='margin-0'
+							customClass='margin-0 input-small input-search'
 							name='search'
 							isSearch={true}
 							placeholder={`Search by typing in the expert's name `}
@@ -61,8 +67,10 @@ const HomepageRegular = ({ options }) => {
 
 						<div className='url-row'>
 							<h3>
-								Select through a vast roster of categories by clicking on a
-								category you are mostly interested in.
+								Also you are able to search for a specific category of
+								expertise. In the list below, click on the category you are most
+								interested and it will show you all accounts that have expertise
+								in that specific field
 							</h3>
 						</div>
 					</div>

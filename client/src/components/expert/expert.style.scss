@@ -1,16 +1,17 @@
 .expert-list-wrapper {
 	height: 95%;
-	width: 40%;
+	width: 550px;
 	overflow-y: scroll;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	border: 1px solid #9a9a9a;
 	// Will copy this to another component
 
 	.expert-list-header {
-		border-bottom: 1px solid #4a4a4a;
+		font-size: 26px;
 		text-align: center;
-		font-weight: lighter;
+		font-weight: normal;
 		padding: 5px;
+		border-bottom: 1px solid #9a9a9a;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
 			rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
 			rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
