@@ -1,5 +1,5 @@
 .requests-container {
-	width: 30%;
+	width: 33%;
 	overflow-y: scroll;
 	height: 90%;
 	border: 0.5px solid #999;
@@ -9,6 +9,8 @@
 		border-bottom: 1px solid #4a4a4a;
 		text-align: center;
 		font-weight: lighter;
+		font-size: 24px;
+		margin-bottom: 10px;
 		padding: 5px;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
 			rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
@@ -18,23 +20,21 @@
 	.request-single {
 		border: 0.5px solid #164a41;
 		border-radius: 5px;
-		margin: 5px 0;
-		height: 150px;
 
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+
 		img {
-			margin-left: 5px;
-			width: 140px;
-			height: 140px;
-			border-radius: 50%;
+			margin: 5px;
+			width: 100px;
+			height: 100px;
+			border-radius: 3px;
 		}
 		.request-img {
 			margin-left: 5px;
-			width: 140px;
-			height: 140px;
-			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			border-radius: 3px;
 			background: #164a41;
 			display: flex;
 			align-items: center;
@@ -43,44 +43,51 @@
 				width: fit-content;
 				display: inline;
 				font-weight: normal;
-				font-size: 40px;
+				font-size: 20px;
 				color: white;
 				letter-spacing: 5px;
 			}
 		}
 		.request-info {
 			flex: 1;
-			height: 150px;
+
 			padding: 5px 10px;
 			display: flex;
 			flex-direction: column;
 
 			justify-content: space-between;
+			h1 {
+				font-size: 20px;
+				font-weight: normal;
+			}
 			.request-btns {
-				height: 50px;
+				height: 35px;
 				display: flex;
 				flex-direction: row;
-				justify-content: flex-end;
+				justify-content: flex-start;
 				.request-btn {
-					border-radius: 5px;
-					width: 120px;
+					border-radius: 3px;
+					width: 100px;
 					margin: 0 5px;
 					display: flex;
 					flex-direction: row;
 					justify-content: center;
 					align-items: center;
+					&:first-of-type {
+						margin-left: 0;
+					}
 					&:hover {
 						cursor: pointer;
-						transform: scale(1.05);
+						background: #ccc;
 						transition: 300ms;
 					}
 					img {
-						width: 20px;
-						height: 20px;
+						width: 16px;
+						height: 16px;
 						margin-right: 5px;
 					}
 					p {
-						font-size: 20px;
+						font-size: 16px;
 						font-weight: bold;
 						margin-left: 5px;
 					}
@@ -99,12 +106,5 @@
 	border: 1px solid #cd1400;
 	p {
 		color: #cd1400;
-	}
-}
-.profile-btn {
-	height: 100%;
-	background: #164a41;
-	p {
-		color: white;
 	}
 }
