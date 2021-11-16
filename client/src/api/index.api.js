@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://mb-connect.herokuapp.com';
 
 // Sign UP
 export const SignUp = (user) => axios.post(`${API_URL}/user/sign_up`, user);

@@ -15,7 +15,7 @@ dotenv.config();
 // Setting up all the constants
 const MONGODB_URL = process.env.MONGODB_URL;
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 // Start the express server
 const app = express();
 
