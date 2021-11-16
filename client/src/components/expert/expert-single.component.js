@@ -74,7 +74,7 @@ const Expert = ({
 					</h2>
 				</div>
 				<div className='primary-info'>
-					<h2>@{email}</h2>
+					<h2>{email}</h2>
 				</div>
 				<div className='secondary-info'>
 					<p>

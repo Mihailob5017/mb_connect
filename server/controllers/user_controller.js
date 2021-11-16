@@ -39,7 +39,7 @@ export const signIn = async (req, res) => {
 		}
 	} catch (error) {
 		res.status(500).json({
-			message: 'There has been an Server Error',
+			message: 'Incorrect Email or Password',
 			error,
 			is_successfull: false,
 		});
@@ -94,7 +94,7 @@ export const signUp = async (req, res) => {
 		}
 	} catch (error) {
 		res.status(500).json({
-			message: 'There has been an Server Error',
+			message: 'Something went wrong',
 			error,
 			is_successfull: false,
 		});
