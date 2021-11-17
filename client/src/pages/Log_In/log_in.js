@@ -46,7 +46,7 @@ const LogIn = ({ handleChange, handleSubmit, state }) => {
 							{/* Google Button Component */}
 
 							<GoogleLogin
-								clientId='750291484607-rjottldigank2iurt9i74jpgspdubki1.apps.googleusercontent.com'
+								clientId='750291484607-uqoqbl4alhk7532j6nl5duv0r06l85de.apps.googleusercontent.com'
 								onSuccess={onGoogleSuccess}
 								onFailure={onGoogleFailure}
 								render={(renderProps) => {
